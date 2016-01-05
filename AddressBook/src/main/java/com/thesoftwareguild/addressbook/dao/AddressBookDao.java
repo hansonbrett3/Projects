@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * @author bretthanson
  */
-public interface addressBookDao {
+public interface AddressBookDao {
     
     public Address addAddress(Address address);
     
@@ -25,7 +25,6 @@ public interface addressBookDao {
     
     public Address getAddressById(int addressId);
     
-    public List<Address> searchAddresses(Map<SearchTerm, String> criteria);
-    
+    public List<Address> searchAddresses(Map<SearchTerm, String> criteria);    
     
 }

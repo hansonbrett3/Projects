@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.Map;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  *
@@ -53,64 +53,64 @@ public class AddressBookDaoTest {
 
     @Test
     public void addGetDeleteAddress() {
-        Address ad = new Address();
-        ad.setFirst("Jane");
-        ad.setLast("Doe");
-        ad.setStreet("111 First Street");
-        ad.setCity("Cleveland");
-        ad.setState("OH");
-        ad.setZip("44118");
+        Address na = new Address();
+        na.setFirst("Jane");
+        na.setLast("Doe");
+        na.setStreet("111 First Street");
+        na.setCity("Cleveland");
+        na.setState("OH");
+        na.setZip("44118");
 
-        dao.addAddress(ad);
+        dao.addAddress(na);
 
-        Address fromDb = dao.getAddressById(ad.getAddressId());
-        assertEquals(fromDb, ad);
-        dao.removeAddress(ad.getAddressId());
-        assertNull(dao.getAddressById(ad.getAddressId()));
+        Address fromDb = dao.getAddressById(na.getAddressId());
+        assertEquals(fromDb, na);
+        dao.removeAddress(na.getAddressId());
+        assertNull(dao.getAddressById(na.getAddressId()));
     }
 
     @Test
     public void addUpdateAddress() {
-        Address ad = new Address();
-        ad.setFirst("Jane");
-        ad.setLast("Doe");
-        ad.setStreet("111 First Street");
-        ad.setCity("Cleveland");
-        ad.setState("OH");
-        ad.setZip("44118");
+        Address na = new Address();
+        na.setFirst("Jane");
+        na.setLast("Doe");
+        na.setStreet("111 First Street");
+        na.setCity("Cleveland");
+        na.setState("OH");
+        na.setZip("44118");
 
-        dao.addAddress(ad);
+        dao.addAddress(na);
 
-        ad.setCity("Chicago");
+        na.setCity("Chicago");
 
-        dao.updateAddress(ad);
+        dao.updateAddress(na);
 
-        Address fromDb = dao.getAddressById(ad.getAddressId());
+        Address fromDb = dao.getAddressById(na.getAddressId());
 
-        assertEquals(fromDb, ad);
+        assertEquals(fromDb, na);
     }
 
     @Test
-    public void getAllDvds() {
-        Address ad = new Address();
-        ad.setFirst("Jane");
-        ad.setLast("Doe");
-        ad.setStreet("111 First Street");
-        ad.setCity("Cleveland");
-        ad.setState("OH");
-        ad.setZip("44118");
+    public void getAllAddresses() {
+        Address na = new Address();
+        na.setFirst("Jane");
+        na.setLast("Doe");
+        na.setStreet("111 First Street");
+        na.setCity("Cleveland");
+        na.setState("OH");
+        na.setZip("44118");
 
-        dao.addAddress(ad);
+        dao.addAddress(na);
 
-        Address ad2 = new Address();
-        ad2.setFirst("Tony");
-        ad2.setLast("Smith");
-        ad2.setStreet("222 Second Street");
-        ad2.setCity("Chicago");
-        ad2.setState("IL");
-        ad2.setZip("55555");
+        Address na2 = new Address();
+        na2.setFirst("Tony");
+        na2.setLast("Smith");
+        na2.setStreet("222 Second Street");
+        na2.setCity("Chicago");
+        na2.setState("IL");
+        na2.setZip("55555");
 
-        dao.addAddress(ad2);
+        dao.addAddress(na2);
 
         List<Address> aList = dao.getAllAddresses();
         assertEquals(aList.size(), 2);
@@ -119,41 +119,41 @@ public class AddressBookDaoTest {
 
     @Test
     public void searchAddresses() {
-        Address ad = new Address();
-        ad.setFirst("Jane");
-        ad.setLast("Doe");
-        ad.setStreet("111 First Street");
-        ad.setCity("Cleveland");
-        ad.setState("OH");
-        ad.setZip("44118");
+        Address na = new Address();
+        na.setFirst("Jane");
+        na.setLast("Doe");
+        na.setStreet("111 First Street");
+        na.setCity("Cleveland");
+        na.setState("OH");
+        na.setZip("44118");
 
-        dao.addAddress(ad);
+        dao.addAddress(na);
 
-        Address ad2 = new Address();
-        ad2.setFirst("Tony");
-        ad2.setLast("Smith");
-        ad2.setStreet("222 Second Street");
-        ad2.setCity("Chicago");
-        ad2.setState("IL");
-        ad2.setZip("55555");
+        Address na2 = new Address();
+        na2.setFirst("Tony");
+        na2.setLast("Smith");
+        na2.setStreet("222 Second Street");
+        na2.setCity("Chicago");
+        na2.setState("IL");
+        na2.setZip("55555");
 
-        dao.addAddress(ad2);
+        dao.addAddress(na2);
 
-        Address ad3 = new Address();
-        ad3.setFirst("Brett");
-        ad3.setLast("Doe");
-        ad3.setStreet("333 Third Street");
-        ad3.setCity("Knoxville");
-        ad3.setState("TN");
-        ad3.setZip("33333");
+        Address na3 = new Address();
+        na3.setFirst("Brett");
+        na3.setLast("Doe");
+        na3.setStreet("333 Third Street");
+        na3.setCity("Knoxville");
+        na3.setState("TN");
+        na3.setZip("33333");
 
-        dao.addAddress(ad3);
+        dao.addAddress(na3);
         
         Map<SearchTerm, String> criteria = new HashMap<>();
         criteria.put(SearchTerm.LAST, "Smith");
         List<Address> aList = dao.searchAddresses(criteria);
         assertEquals(1, aList.size());
-        assertEquals(ad2, aList.get(0));
+        assertEquals(na2, aList.get(0));
         
         criteria.put(SearchTerm.LAST, "Doe");
         aList = dao.searchAddresses(criteria);
@@ -162,12 +162,12 @@ public class AddressBookDaoTest {
         criteria.put(SearchTerm.CITY, "Cleveland");
         aList = dao.searchAddresses(criteria);
         assertEquals(1, aList.size());
-        assertEquals(ad, aList.get(0));
+        assertEquals(na, aList.get(0));
         
         criteria.put(SearchTerm.CITY, "Knoxville");
         aList = dao.searchAddresses(criteria);
         assertEquals(1, aList.size());
-        assertEquals(ad3, aList.get(0));
+        assertEquals(na3, aList.get(0));
         
         criteria.put(SearchTerm.CITY, "New York City");
         aList = dao.searchAddresses(criteria);

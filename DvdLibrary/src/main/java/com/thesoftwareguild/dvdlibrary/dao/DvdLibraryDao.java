@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * @author bretthanson
  */
-public interface dvdLibraryDao {
+public interface DvdLibraryDao {
     
     public Dvd addDvd(Dvd dvd);
     

@@ -171,7 +171,7 @@ public class DvdLibraryDaoTest {
         assertEquals(1, dList.size());
         assertEquals(nd3, dList.get(0));
 
-        criteria.put(SearchTerm.NOTE, "Third Note");
+        criteria.put(SearchTerm.STUDIO, "Three Studios");
         dList = dao.searchDvds(criteria);
         assertEquals(1, dList.size());
         assertEquals(nd3, dList.get(0));

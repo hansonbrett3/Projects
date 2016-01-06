@@ -29,88 +29,88 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-6">
-                <h2>My Addresses</h2>
-                <table id="addressTable" class="table table-hover">
-                    <tr>
-                        <th width="40%">First Name</th>
-                        <th width="30%">Last Name</th>
-                        <th width="15%"></th>
-                        <th width="15"></th>
-                    </tr>
-                    <tbody id="contentRows"></tbody>
-                </table>
-            </div>
-            <div class="col-md-6">
-                <h2>Add New Address</h2>
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label for="add-first" class="col-md-4 control-label">First Name</label>
-                        <div class="col-md-8">
-                            <input type="text"
-                                   class="form-control"
-                                   id="add-first"
-                                   placeholder="First Name"/>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>My Addresses</h2>
+                    <table id="addressTable" class="table table-hover">
+                        <tr>
+                            <th width="40%">First Name</th>
+                            <th width="30%">Last Name</th>
+                            <th width="15%"></th>
+                            <th width="15"></th>
+                        </tr>
+                        <tbody id="contentRows"></tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h2>Add New Address</h2>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="add-first" class="col-md-4 control-label">First Name</label>
+                            <div class="col-md-8">
+                                <input type="text"
+                                       class="form-control"
+                                       id="add-first"
+                                       placeholder="First Name"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="add-last" class="col-md-4 control-label">Last Name</label>
-                        <div class="col-md-8">
-                            <input type="text"
-                                   class="form-control"
-                                   id="add-last"
-                                   placeholder="Last Name"/>
+                        <div class="form-group">
+                            <label for="add-last" class="col-md-4 control-label">Last Name</label>
+                            <div class="col-md-8">
+                                <input type="text"
+                                       class="form-control"
+                                       id="add-last"
+                                       placeholder="Last Name"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="add-street" class="col-md-4 control-label">Street Address</label>
-                        <div class="col-md-8">
-                            <input type="text"
-                                   class="form-control"
-                                   id="add-street"
-                                   placeholder="Street Address"/>
+                        <div class="form-group">
+                            <label for="add-street" class="col-md-4 control-label">Street Address</label>
+                            <div class="col-md-8">
+                                <input type="text"
+                                       class="form-control"
+                                       id="add-street"
+                                       placeholder="Street Address"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="add-city" class="col-md-4 control-label">City</label>
-                        <div class="col-md-8">
-                            <input type="text"
-                                   class="form-control"
-                                   id="add-city"
-                                   placeholder="City"/>
+                        <div class="form-group">
+                            <label for="add-city" class="col-md-4 control-label">City</label>
+                            <div class="col-md-8">
+                                <input type="text"
+                                       class="form-control"
+                                       id="add-city"
+                                       placeholder="City"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="add-state" class="col-md-4 control-label">State</label>
-                        <div class="col-md-8">
-                            <input type="text"
-                                   class="form-control"
-                                   id="add-state"
-                                   placeholder="State"/>
+                        <div class="form-group">
+                            <label for="add-state" class="col-md-4 control-label">State</label>
+                            <div class="col-md-8">
+                                <input type="text"
+                                       class="form-control"
+                                       id="add-state"
+                                       placeholder="State"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="add-zip" class="col-md-4 control-label">Zip Code</label>
-                        <div class="col-md-8">
-                            <input type="text"
-                                   class="form-control"
-                                   id="add-zip"
-                                   placeholder="Zip Code"/>
+                        <div class="form-group">
+                            <label for="add-zip" class="col-md-4 control-label">Zip Code</label>
+                            <div class="col-md-8">
+                                <input type="text"
+                                       class="form-control"
+                                       id="add-zip"
+                                       placeholder="Zip Code"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-4 col-md-8">
-                            <button type="submit"
-                                    id="add-button"
-                                    class="btn btn-default">
-                                Add New Address
-                            </button>
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-8">
+                                <button type="submit"
+                                        id="add-button"
+                                        class="btn btn-default">Create Address</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-<!-- DETAILS MODAL -->
+        <!-- DETAILS MODAL -->
         <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog"
              aria-labelledby="detailsModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -157,7 +157,7 @@
                 </div>
             </div>
         </div>
-<!--EDIT MODAL -->
+        <!--EDIT MODAL -->
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog"
              aria-labelledby="detailsModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -219,7 +219,7 @@
                 </div>
             </div>
         </div>
-        <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/addressBook.js"></script>
     </body>

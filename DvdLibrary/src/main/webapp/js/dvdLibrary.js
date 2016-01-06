@@ -6,6 +6,41 @@
 
 $(document).ready(function () {
     loadDvds();
+
+    $('#add-button').click(function (event) {
+
+        event.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: 'dvd',
+            data: JSON.stringify({
+                title: $('#add-title').val(),
+                released: $('#add-released').val(),
+                mpaa: $('#add-mpaa').val(),
+                director: $('#add-director').val(),
+                studio: $('#add-studio').val(),
+                rating: $('#add-rating').val(),
+                note: $('#add-note').val()
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            'dataType': 'json'
+        }).success(function (data, status) {
+            $('#add-title').val('');
+            $('#add-released').val('');
+            $('#add-mpaa').val('');
+            $('#add-director').val('');
+            $('#add-studio').val('');
+            $('#add-rating').val('');
+            $('#add-note').val('');
+
+            loadDvds();
+        });
+    });
+
 });
 
 function loadDvds() {
@@ -14,33 +49,44 @@ function loadDvds() {
 
     var dTable = $('#contentRows');
 
-    $.each(testDvdData, function (index, dvd) {
-        dTable.append($('<tr>')
-                .append($('<td>')
-                        .append($('<a>')
-                                .attr({
-                                    'data-dvd-id': dvd.dvdId,
-                                    'data-toggle': 'modal',
-                                    'data-target': '#detailsModal'
-                                })
-                                .text(dvd.title + ' ' + dvd.mpaa)
-                                )
-                        )
-                .append($('<td>').text(dvd.director))
-                .append($('<td>')
-                        .append($('<a>')
-                                .attr({
-                                    'data-dvd-id': dvd.dvdId,
-                                    'data-toggle': 'modal',
-                                    'data-target': '#editModal'
-                                })
-                                .text('Edit')
-                                )
-                        )
-                .append($('<td>').text('Delete'))
-                );
-    });
+    $.ajax({
+        url: "dvds"
+    }).success(function (data, status) {
 
+        $.each(data, function (index, dvd) {
+            dTable.append($('<tr>')
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .attr({
+                                        'data-dvd-id': dvd.dvdId,
+                                        'data-toggle': 'modal',
+                                        'data-target': '#detailsModal'
+                                    })
+                                    .text(dvd.title + ' ' + dvd.mpaa)
+                                    )
+                            )
+                    .append($('<td>').text(dvd.director))
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .attr({
+                                        'data-dvd-id': dvd.dvdId,
+                                        'data-toggle': 'modal',
+                                        'data-target': '#editModal'
+                                    })
+                                    .text('Edit')
+                                    )
+                            )
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .attr({
+                                        'onClick': 'deleteDvd(' + dvd.dvdId + ')'
+                                    })
+                                    .text('Delete')
+                                    )
+                            )
+                    );
+        });
+    });
 }
 
 function clearDvdTable() {
@@ -51,29 +97,78 @@ $('#detailsModal').on('show.bs.modal', function (event) {
     var element = $(event.relatedTarget);
     var dvdId = element.data('dvd-id');
     var modal = $(this);
-    modal.find('#dvd-id').text(dummyDetailsDvd.dvdId);
-    modal.find('#dvd-title').text(dummyDetailsDvd.title);
-    modal.find('#dvd-released').text(dummyDetailsDvd.released);
-    modal.find('#dvd-mpaa').text(dummyDetailsDvd.mpaa);
-    modal.find('#dvd-director').text(dummyDetailsDvd.director);
-    modal.find('#dvd-studio').text(dummyDetailsDvd.studio);
-    modal.find('#dvd-rating').text(dummyDetailsDvd.rating);
-    modal.find('#dvd-note').text(dummyDetailsDvd.note);
+    $.ajax({
+        type: 'GET',
+        url: 'dvd/' + dvdId
+    }).success(function (dvd) {
+        modal.find('#dvd-id').text(dvd.dvdId);
+        modal.find('#dvd-title').text(dvd.title);
+        modal.find('#dvd-released').text(dvd.released);
+        modal.find('#dvd-mpaa').text(dvd.mpaa);
+        modal.find('#dvd-director').text(dvd.director);
+        modal.find('#dvd-studio').text(dvd.studio);
+        modal.find('#dvd-rating').text(dvd.rating);
+        modal.find('#dvd-note').text(dvd.note);
+    });
 });
 
 $('#editModal').on('show.bs.modal', function (event) {
     var element = $(event.relatedTarget);
     var dvdId = element.data('dvd-id');
     var modal = $(this);
-    modal.find('#dvd-id').text(dummyEditDvd.dvdId);
-    modal.find('#edit-title').val(dummyEditDvd.title);
-    modal.find('#edit-released').val(dummyEditDvd.released);
-    modal.find('#edit-mpaa').val(dummyEditDvd.mpaa);
-    modal.find('#edit-director').val(dummyEditDvd.director);
-    modal.find('#edit-studio').val(dummyEditDvd.studio);
-    modal.find('#edit-rating').val(dummyEditDvd.rating);
-    modal.find('#edit-note').val(dummyEditDvd.note);
+    $.ajax({
+        type: 'GET',
+        url: 'dvd/' + dvdId
+    }).success(function (dvd) {
+        modal.find('#dvd-id').text(dvd.dvdId);
+        modal.find('#edit-dvd-id').val(dvd.dvdId);
+        modal.find('#edit-title').val(dvd.title);
+        modal.find('#edit-released').val(dvd.released);
+        modal.find('#edit-mpaa').val(dvd.mpaa);
+        modal.find('#edit-director').val(dvd.director);
+        modal.find('#edit-studio').val(dvd.studio);
+        modal.find('#edit-rating').val(dvd.rating);
+        modal.find('#edit-note').val(dvd.note);
+    });
 });
+
+$('#edit-button').click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        type: 'PUT',
+        url: 'dvd/' + $('#edit-dvd-id').val(),
+        data: JSON.stringify({
+            dvdId: $('#edit-dvd-id').val(),
+            title: $('#edit-title').val(),
+            released: $('#edit-released').val(),
+            mpaa: $('#edit-mpaa').val(),
+            director: $('#edit-director').val(),
+            studio: $('#edit-studio').val(),
+            rating: $('#edit-rating').val(),
+            note: $('#edit-note').val()
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        'dataType': 'json'
+    }).success(function () {
+        loadDvds();
+    });
+});
+
+function deleteDvd(id) {
+    var answer = confirm("Do you really want to delete this dvd?");
+
+    if (answer === true) {
+        $.ajax({
+            type: 'DELETE',
+            url: 'dvd/' + id
+        }).success(function () {
+            loadDvds();
+        });
+    }
+}
 
 var testDvdData = [
     {

@@ -40,16 +40,14 @@ public class HomeController {
     
     // RETRIEVING AN ADDRESS
     @RequestMapping(value = "/address/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Address getAddress(@PathVariable("id") int id) {
+    @ResponseBody public Address getAddress(@PathVariable("id") int id) {
         return dao.getAddressById(id);
     }
 
 // CREATING AN ADDRESS
-    @RequestMapping(value = "/address", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public Address createAddress(@Valid @RequestBody Address address) {
+    @RequestMapping (value = "/address", method = RequestMethod.POST)
+    @ResponseStatus (HttpStatus.CREATED)
+    @ResponseBody public Address createAddress(@Valid @RequestBody Address address) {
         dao.addAddress(address);
         return address;
     }
@@ -71,8 +69,7 @@ public class HomeController {
 
 // RETRIEVING ALL ADDRESSES
     @RequestMapping(value = "/addresses", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Address> getAllAddresses() {
+    @ResponseBody public List<Address> getAllAddresses() {
         return dao.getAllAddresses();
     }
 }

@@ -6,7 +6,6 @@
 
 $(document).ready(function () {
     loadDvds();
-
     $('#add-button').click(function (event) {
 
         event.preventDefault();
@@ -40,53 +39,124 @@ $(document).ready(function () {
             loadDvds();
         });
     });
+    $('#edit-button').click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'PUT',
+            url: 'dvd/' + $('#edit-dvd-id').val(),
+            data: JSON.stringify({
+                dvdId: $('#edit-dvd-id').val(),
+                title: $('#edit-title').val(),
+                released: $('#edit-released').val(),
+                mpaa: $('#edit-mpaa').val(),
+                director: $('#edit-director').val(),
+                studio: $('#edit-studio').val(),
+                rating: $('#edit-rating').val(),
+                note: $('#edit-note').val()
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            'dataType': 'json'
+        }).success(function () {
+            loadDvds();
+        });
+    });
+    $('#search-button').click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'search/dvds',
+            data: JSON.stringify({
+                title: $('#search-title').val(),
+                released: $('#search-released').val(),
+                mpaa: $('#search-mpaa').val(),
+                director: $('#search-director').val(),
+                studio: $('#search-studio').val(),
+                rating: $('#search-rating').val(),
+                note: $('#search-note').val()
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            'dataType': 'json'
+        }).success(function (data, status) {
+            $('#search-title').val('');
+            $('#search-released').val('');
+            $('#search-mpaa').val('');
+            $('#search-director').val('');
+            $('#search-studio').val('');
+            $('#search-rating').val('');
+            $('#search-note').val('');
 
+            fillDvdTable(data, status);
+        });
+    });
 });
 
+//===============
+// FUNCTIONS
+//===============
+
 function loadDvds() {
-
-    clearDvdTable();
-
-    var dTable = $('#contentRows');
-
     $.ajax({
         url: "dvds"
     }).success(function (data, status) {
-
-        $.each(data, function (index, dvd) {
-            dTable.append($('<tr>')
-                    .append($('<td>')
-                            .append($('<a>')
-                                    .attr({
-                                        'data-dvd-id': dvd.dvdId,
-                                        'data-toggle': 'modal',
-                                        'data-target': '#detailsModal'
-                                    })
-                                    .text(dvd.title + ' ' + dvd.mpaa)
-                                    )
-                            )
-                    .append($('<td>').text(dvd.director))
-                    .append($('<td>')
-                            .append($('<a>')
-                                    .attr({
-                                        'data-dvd-id': dvd.dvdId,
-                                        'data-toggle': 'modal',
-                                        'data-target': '#editModal'
-                                    })
-                                    .text('Edit')
-                                    )
-                            )
-                    .append($('<td>')
-                            .append($('<a>')
-                                    .attr({
-                                        'onClick': 'deleteDvd(' + dvd.dvdId + ')'
-                                    })
-                                    .text('Delete')
-                                    )
-                            )
-                    );
-        });
+        fillDvdTable(data, status);
     });
+}
+
+function fillDvdTable(dvdLibrary, status) {
+    clearDvdTable();
+    var dTable = $('#contentRows');
+    $.each(dvdLibrary, function (index, dvd) {
+        dTable.append($('<tr>')
+                .append($('<td>')
+                        .append($('<a>')
+                                .attr({
+                                    'data-dvd-id': dvd.dvdId,
+                                    'data-toggle': 'modal',
+                                    'data-target': '#detailsModal'
+                                })
+                                .text(dvd.title + ' ' + dvd.mpaa)
+                                )
+                        )
+                .append($('<td>').text(dvd.released))
+                .append($('<td>')
+                        .append($('<a>')
+                                .attr({
+                                    'data-dvd-id': dvd.dvdId,
+                                    'data-toggle': 'modal',
+                                    'data-target': '#editModal'
+                                })
+                                .text('Edit')
+                                )
+                        )
+                .append($('<td>')
+                        .append($('<a>')
+                                .attr({
+                                    'onClick': 'deleteDvd(' + dvd.dvdId + ')'
+                                })
+                                .text('Delete')
+                                )
+                        )
+                );
+    });
+}
+
+function deleteDvd(id) {
+    var answer = confirm("Do you really want to delete this dvd?");
+
+    if (answer === true) {
+        $.ajax({
+            type: 'DELETE',
+            url: 'dvd/' + id
+        }).success(function () {
+            loadDvds();
+        });
+    }
 }
 
 function clearDvdTable() {
@@ -131,44 +201,6 @@ $('#editModal').on('show.bs.modal', function (event) {
         modal.find('#edit-note').val(dvd.note);
     });
 });
-
-$('#edit-button').click(function (event) {
-    event.preventDefault();
-    $.ajax({
-        type: 'PUT',
-        url: 'dvd/' + $('#edit-dvd-id').val(),
-        data: JSON.stringify({
-            dvdId: $('#edit-dvd-id').val(),
-            title: $('#edit-title').val(),
-            released: $('#edit-released').val(),
-            mpaa: $('#edit-mpaa').val(),
-            director: $('#edit-director').val(),
-            studio: $('#edit-studio').val(),
-            rating: $('#edit-rating').val(),
-            note: $('#edit-note').val()
-        }),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        'dataType': 'json'
-    }).success(function () {
-        loadDvds();
-    });
-});
-
-function deleteDvd(id) {
-    var answer = confirm("Do you really want to delete this dvd?");
-
-    if (answer === true) {
-        $.ajax({
-            type: 'DELETE',
-            url: 'dvd/' + id
-        }).success(function () {
-            loadDvds();
-        });
-    }
-}
 
 var testDvdData = [
     {

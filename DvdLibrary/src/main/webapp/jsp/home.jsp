@@ -112,16 +112,14 @@
                             <div class="col-md-offset-4 col-md-8">
                                 <button type="submit"
                                         id="add-button"
-                                        class="btn btn-default">
-                                    Add New DVD
-                                </button>
+                                        class="btn btn-default">Add New DVD</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-<!-- DETAILS MODAL -->
+        <!-- DETAILS MODAL -->
         <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog"
              aria-labelledby="detailsModalLabel" aria-hidden="true">
             <div class="modal-dialog">

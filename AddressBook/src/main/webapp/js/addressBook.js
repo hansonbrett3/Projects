@@ -7,11 +7,10 @@
 
 $(document).ready(function () {
     loadAddresses();
-
+    
     $('#add-button').click(function (event) {
-        
+
         event.preventDefault();
-        
         $.ajax({
             type: 'POST',
             url: 'address',
@@ -61,60 +60,89 @@ $(document).ready(function () {
             loadAddresses();
         });
     });
+    $('#search-button').click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'search/addresses',
+            data: JSON.stringify({
+                first: $('#search-first').val(),
+                last: $('#search-last').val(),
+                street: $('#search-street').val(),
+                city: $('#search-city').val(),
+                state: $('#search-state').val(),
+                zip: $('#search-zip').val()
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            'dataType': 'json'
+        }).success(function (data, status) {
+            $('#search-first').val('');
+            $('#search-last').val('');
+            $('#search-street').val('');
+            $('#search-city').val('');
+            $('#search-state').val('');
+            $('#search-zip').val('');
+            
+            fillAddressTable(data, status);
+        });
+    });
 });
-
 //===============
 // FUNCTIONS
 //===============
 
 function loadAddresses() {
-
-    clearAddressTable();
-
-    var aTable = $('#contentRows');
-
     $.ajax({
         url: "addresses"
     }).success(function (data, status) {
-        $.each(data, function (index, address) {
-            aTable.append($('<tr>')
-                    .append($('<td>')
-                            .append($('<a>')
-                                    .attr({
-                                        'data-address-id': address.addressId,
-                                        'data-toggle': 'modal',
-                                        'data-target': '#detailsModal'
-                                    })
-                                    .text(address.first + ' ' + address.last)
-                                    )
-                            )
-                    .append($('<td>').text(address.street))
-                    .append($('<td>')
-                            .append($('<a>')
-                                    .attr({
-                                        'data-address-id': address.addressId,
-                                        'data-toggle': 'modal',
-                                        'data-target': '#editModal'
-                                    })
-                                    .text('Edit')
-                                    )
-                            )
-                    .append($('<td>')
-                            .append($('<a>')
-                                    .attr({
-                                        'onClick': 'deleteAddress(' + address.addressId + ')'
-                                    })
-                                    .text('Delete')
-                                    )
-                            )
-                    );
-        });
+        fillAddressTable(data, status);
     });
 }
 
+function fillAddressTable(addressBook, status) {
+    clearAddressTable();
+    var aTable = $('#contentRows');
+    $.each(addressBook, function (index, address) {
+        aTable.append($('<tr>')
+                .append($('<td>')
+                        .append($('<a>')
+                                .attr({
+                                    'data-address-id': address.addressId,
+                                    'data-toggle': 'modal',
+                                    'data-target': '#detailsModal'
+                                })
+                                .text(address.first + ' ' + address.last)
+                                )
+                        )
+                .append($('<td>').text(address.street))
+                .append($('<td>')
+                        .append($('<a>')
+                                .attr({
+                                    'data-address-id': address.addressId,
+                                    'data-toggle': 'modal',
+                                    'data-target': '#editModal'
+                                })
+                                .text('Edit')
+                                )
+                        )
+                .append($('<td>')
+                        .append($('<a>')
+                                .attr({
+                                    'onClick': 'deleteAddress(' + address.addressId + ')'
+                                })
+                                .text('Delete')
+                                )
+                        )
+                );
+    });
+}
+
+
 function deleteAddress(id) {
     var answer = confirm("Do you really want to delete this address?");
-
     if (answer === true) {
         $.ajax({
             type: 'DELETE',
@@ -147,7 +175,6 @@ $('#detailsModal').on('show.bs.modal', function (event) {
         modal.find('#address-zip').text(address.zip);
     });
 });
-
 $('#editModal').on('show.bs.modal', function (event) {
     var element = $(event.relatedTarget);
     var addressId = element.data('address-id');
@@ -166,7 +193,6 @@ $('#editModal').on('show.bs.modal', function (event) {
         modal.find('#edit-zip').val(address.zip);
     });
 });
-
 var testAddressData = [
     {
         addressId: 1,
@@ -193,7 +219,6 @@ var testAddressData = [
         state: "MO",
         zip: "55703"}
 ];
-
 var dummyDetailsAddress =
         {
             addressId: "27",
@@ -204,7 +229,6 @@ var dummyDetailsAddress =
             state: "OH",
             zip: "44506"
         };
-
 var dummyEditAddress =
         {
             addressId: 45,

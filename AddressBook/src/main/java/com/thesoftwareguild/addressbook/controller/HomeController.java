@@ -26,6 +26,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 public class HomeController {
 
+    @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
+    public String displayHomePage() {
+        return "home";
+    }
+
     private AddressBookDao dao;
 
     @Inject
@@ -33,21 +38,18 @@ public class HomeController {
         this.dao = dao;
     }
 
-    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
-    public String displayHomePage() {
-        return "home";
-    }
-    
-    // RETRIEVING AN ADDRESS
+// RETRIEVING AN ADDRESS
     @RequestMapping(value = "/address/{id}", method = RequestMethod.GET)
-    @ResponseBody public Address getAddress(@PathVariable("id") int id) {
+    @ResponseBody
+    public Address getAddress(@PathVariable("id") int id) {
         return dao.getAddressById(id);
     }
 
 // CREATING AN ADDRESS
-    @RequestMapping (value = "/address", method = RequestMethod.POST)
-    @ResponseStatus (HttpStatus.CREATED)
-    @ResponseBody public Address createAddress(@Valid @RequestBody Address address) {
+    @RequestMapping(value = "/address", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public Address createAddress(@Valid @RequestBody Address address) {
         dao.addAddress(address);
         return address;
     }
@@ -60,7 +62,7 @@ public class HomeController {
     }
 
 // UPDATING AN ADDRESS
-    @RequestMapping(value = "/address/{id}", method = RequestMethod.PUT) 
+    @RequestMapping(value = "/address/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void putAddress(@PathVariable("id") int id, @RequestBody Address address) {
         address.setAddressId(id);
@@ -69,7 +71,8 @@ public class HomeController {
 
 // RETRIEVING ALL ADDRESSES
     @RequestMapping(value = "/addresses", method = RequestMethod.GET)
-    @ResponseBody public List<Address> getAllAddresses() {
+    @ResponseBody
+    public List<Address> getAllAddresses() {
         return dao.getAllAddresses();
     }
 }

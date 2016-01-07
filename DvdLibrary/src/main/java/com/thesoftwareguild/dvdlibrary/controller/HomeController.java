@@ -40,16 +40,14 @@ public class HomeController {
 
 // RETRIEVING A DVD
     @RequestMapping(value = "/dvd/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Dvd getDvd(@PathVariable("id") int id) {
+    @ResponseBody public Dvd getDvd(@PathVariable("id") int id) {
         return dao.getDvdById(id);
     }
 
 // CREATING A DVD
     @RequestMapping(value = "/dvd", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public Dvd createDvd(@Valid @RequestBody Dvd dvd) {
+    @ResponseBody public Dvd createDvd(@Valid @RequestBody Dvd dvd) {
         dao.addDvd(dvd);
         return dvd;
     }
@@ -71,9 +69,7 @@ public class HomeController {
 
 // RETRIEVING ALL DVDS
     @RequestMapping(value = "/dvds", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Dvd> getAllDvds() {
+    @ResponseBody public List<Dvd> getAllDvds() {
         return dao.getAllDvds();
     }
-
 }

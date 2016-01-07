@@ -34,8 +34,8 @@
                     <h2>My Addresses</h2>
                     <table id="addressTable" class="table table-hover">
                         <tr>
-                            <th width="40%">First Name</th>
-                            <th width="30%">Last Name</th>
+                            <th width="40%">Name</th>
+                            <th width="30%">Street</th>
                             <th width="15%"></th>
                             <th width="15"></th>
                         </tr>

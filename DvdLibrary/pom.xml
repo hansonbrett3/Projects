@@ -126,6 +126,41 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+                        <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.4.1</version>
+                <executions>
+                    <execution>
+                        <id>run-db</id>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <changeLogFile>src/main/resources/liquibase/migration_script.sql</changeLogFile>
+                            <driver>com.mysql.jdbc.Driver</driver>
+                            <url>jdbc:mysql://localhost/dvd_library</url>
+                            <username>root</username>
+                            <password>root</password>
+                        </configuration>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-db</id>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <changeLogFile>src/main/resources/liquibase/migration_script.sql</changeLogFile>
+                            <driver>com.mysql.jdbc.Driver</driver>
+                            <url>jdbc:mysql://localhost/dvd_library_test</url>
+                            <username>root</username>
+                            <password>root</password>
+                        </configuration>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>

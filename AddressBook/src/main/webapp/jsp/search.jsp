@@ -27,6 +27,9 @@
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/stats">Stats</a>
                     </li>
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/displayAddressBookNoAjax">Display Address Book (No Ajax)</a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Address Book</title>
+        <title>DVD Library</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
               rel="stylesheet">
         <link rel="shortcut icon"
@@ -15,89 +15,99 @@
     </head>
     <body>
         <div class="container">
-            <h1>Address Book</h1>
+            <h1>DVD Library</h1>
             <hr/>
         </div>
         <div class="container">
-            <h1>New Address Form</h1>
-
-            <a href="displayAddressBookNoAjax">Address Book (No Ajax)</a><br/>
+            <h1>New DVD Form</h1>
+            <a href="displayDvdLibraryNoAjax">DVD Library (No Ajax)</a><br/>
             <hr/>
             <form class="form-horizontal"
                   role="form"
-                  action="addNewAddressNoAjax"
+                  action="addNewDvdNoAjax"
                   method="POST">
                 <div class="form-group">
-                    <label for="add-first"
-                           class="col-md-4 control-label">First Name:</label>
+                    <label for="add-title"
+                           class="col-md-4 control-label">Title:</label>
                     <div class="col-md-8">
                         <input type="text"
                                class="form-control"
-                               id="add-first"
-                               name="first"
-                               placeholder="First Name"/>
+                               id="add-title"
+                               name="title"
+                               placeholder="Title"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="add-last"
-                           class="col-md-4 control-label">Last Name:</label>
+                    <label for="add-released"
+                           class="col-md-4 control-label">Release Date:</label>
                     <div class="col-md-8">
                         <input type="text"
                                class="form-control"
-                               id="add-last-name"
-                               name="last"
-                               placeholder="Last Name"/>
+                               id="add-released"
+                               name="released"
+                               placeholder="Release Date"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="add-street"
-                           class="col-md-4 control-label">Street Address:</label>
+                    <label for="add-mpaa"
+                           class="col-md-4 control-label">MPAA Rating:</label>
                     <div class="col-md-8">
                         <input type="text"
                                class="form-control"
-                               id="add-address"
-                               name="address"
-                               placeholder="Street Address"/>
+                               id="add-mpaa"
+                               name="mpaa"
+                               placeholder="MPAA Rating"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="add-city"
-                           class="col-md-4 control-label">City:</label>
+                    <label for="add-director"
+                           class="col-md-4 control-label">Director:</label>
                     <div class="col-md-8">
                         <input type="text"
                                class="form-control"
-                               id="add-city"
-                               name="city"
-                               placeholder="City"/>
+                               id="add-director"
+                               name="director"
+                               placeholder="Director"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="state"
-                           class="col-md-4 control-label">State:</label>
+                    <label for="add-studio"
+                           class="col-md-4 control-label">Studio:</label>
                     <div class="col-md-8">
                         <input type="text"
                                class="form-control"
-                               id="add-state"
-                               name="state"
-                               placeholder="State"/>
+                               id="add-studio"
+                               name="studio"
+                               placeholder="Studio"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="zip"
-                           class="col-md-4 control-label">Zip Code:</label>
+                    <label for="add-rating"
+                           class="col-md-4 control-label">User Rating:</label>
                     <div class="col-md-8">
                         <input type="text"
                                class="form-control"
-                               id="add-zip"
-                               name="zip"
-                               placeholder="Zip Code"/>
+                               id="add-rating"
+                               name="rating"
+                               placeholder="User Rating"/>
                     </div>
-                </div> 
+                </div>
+                <div class="form-group">
+                    <label for="add-note"
+                           class="col-md-4 control-label">User Note:</label>
+                    <div class="col-md-8">
+                        <input type="text"
+                               class="form-control"
+                               id="add-note"
+                               name="note"
+                               placeholder="User Note"/>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-md-offset-4 col-md-8">
                         <button type="submit"
                                 id="add-button"
-                                class="btn btn-default">Add New Address</button>
+                                class="btn btn-default">Add New DVD</button>
                     </div>
                 </div>
             </form>

@@ -35,8 +35,13 @@ $(document).ready(function () {
             $('#add-studio').val('');
             $('#add-rating').val('');
             $('#add-note').val('');
-
+            $('#validationErrors').empty();
             loadDvds();
+        }).error(function (data, status) {
+            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
+                var errorDiv = $('#validationErrors');
+                errorDiv.append(validationError.message).append($('<br>'));
+            });
         });
     });
     $('#edit-button').click(function (event) {

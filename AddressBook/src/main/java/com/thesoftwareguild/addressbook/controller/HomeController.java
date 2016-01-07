@@ -26,16 +26,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
-    public String displayHomePage() {
-        return "home";
-    }
-
     private AddressBookDao dao;
 
     @Inject
     public HomeController(AddressBookDao dao) {
         this.dao = dao;
+    }
+
+    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
+    public String displayHomePage() {
+        return "home";
     }
 
 // RETRIEVING AN ADDRESS

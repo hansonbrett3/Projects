@@ -28,7 +28,7 @@
                         <a href="${pageContext.request.contextPath}/stats">Stats</a>
                     </li>
                     <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/displayAddressBookNoAjax">Display Address Book (No Ajax)</a>
+                        <a href="${pageContext.request.contextPath}/displayAddressBookNoAjax">Address Book (No Ajax)</a>
                     </li>
                 </ul>
             </div>
@@ -110,6 +110,7 @@
                             </div>
                         </div>
                     </form>
+                    <div id="validationErrors" style="color: red" />
                 </div>
             </div>
         </div>
@@ -214,7 +215,6 @@
                                 <div class="col-md-offset-4 col-md-8">
                                     <button type="submit" id="edit-button" class="btn btn-default" data-dismiss="modal">Edit Address</button>
                                     <button type="button" class="btn btn-default"data-dismiss="modal">Cancel</button>
-                                    <input type="hidden" id="edit-address-id">
                                 </div>
                             </div>
                         </form>

@@ -8,8 +8,10 @@ package com.thesoftwareguild.addressbook.dao;
 import com.thesoftwareguild.addressbook.model.Address;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -91,40 +93,50 @@ public class AddressBookDaoDbImpl implements AddressBookDao {
     }
 
     @Override
-    public List<Address> searchAddresses(Map<SearchTerm, String> criteria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Address> searchAddresses(Map<SearchTerm, String> criteria) 
+    {
+            if (criteria == null || criteria.size() == 0) {
+            return getAllAddresses();
+        }
+
+        StringBuilder query = new StringBuilder("select * from addresses where ");
+
+        int numParams = criteria.size();
+        int paramPosition = 0;
+
+        String[] paramVals = new String[numParams];
+
+        Set<SearchTerm> keyset = criteria.keySet();
+        Iterator<SearchTerm> iter = keyset.iterator();
+
+        while (iter.hasNext()) {
+            SearchTerm currentKey = iter.next();
+            String currentValue = criteria.get(currentKey);
+
+            if (paramPosition > 0) 
+            {
+                query.append(" and ");
+            }
+
+            query.append(currentKey);
+            query.append(" =? ");
+
+            paramVals[paramPosition] = currentValue;
+            paramPosition++;
+        }
+
+        return jdbcTemplate.query(query.toString(), new AddressMapper(), paramVals);
     }
-    //        if (criteria == null || criteria.size() == 0) {
-//            return getAllAddresses();
-//        }
-//
-//        StringBuilder query = new StringBuilder("SELECT * FROM addresses WHERE ");
-//
-//        int numParams = criteria.size();
-//        int paramPosition = 0;
-//
-//        String[] paramVals = new String[numParams];
-//
-//        Set<SearchTerm> keyset = criteria.keySet();
-//        Iterator<SearchTerm> iter = keyset.iterator();
-//
-//        while (iter.hasNext()) {
-//            SearchTerm currentKey = iter.next();
-//            String currentValue = criteria.get(currentKey);
-//
-//            if (paramPosition > 0) {
-//                query.append(" and ");
-//            }
-//
-//            query.append(currentKey);
-//            query.append(" =? ");
-//
-//            paramVals[paramPosition] = currentValue;
-//            paramPosition++;
-//        }
-//
-//        return jdbcTemplate.query(query.toString(), new AddressMapper(), paramVals);
-//    }
+
+    @Override
+    public List<Address> searchAddressesByFirst(String first) {
+        return jdbcTemplate.query(SQL_SELECT_ADDRESSES_BY_FIRST, new AddressMapper(), first);
+    }
+
+    @Override
+    public List<Address> searchAddressByLast(String last) {
+        return jdbcTemplate.query(SQL_SELECT_ADDRESSES_BY_LAST, new AddressMapper(), last);
+    }
 
         private static final class AddressMapper implements RowMapper<Address> {
 

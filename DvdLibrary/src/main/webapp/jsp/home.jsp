@@ -27,6 +27,9 @@
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/stats">Stats</a>
                     </li>
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/displayDvdLibraryNoAjax">DVD Library (No Ajax)</a>
+                    </li>
                 </ul>
             </div>
             <div class="row">
@@ -116,6 +119,7 @@
                             </div>
                         </div>
                     </form>
+                    <div id="validationErrors" style="color: red" />
                 </div>
             </div>
         </div>
@@ -187,50 +191,70 @@
                             <div class="form-group">
                                 <label for="edit-title" class="col-md-4 control-label">Title:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-title" placeholder="Title">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-title" 
+                                           placeholder="Title">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-released" class="col-md-4 control-label">Release Date:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-released"placeholder="Release Date">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-released"
+                                           placeholder="Release Date">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-mpaa" class="col-md-4 control-label">MPAA Rating:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-mpaa" placeholder="MPAA Rating">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-mpaa"
+                                           placeholder="MPAA Rating">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-director" class="col-md-4 control-label">Director Name:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-director" placeholder="Director Name">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-director" 
+                                           placeholder="Director Name">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-studio" class="col-md-4 control-label">Studio:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-studio" placeholder="studio">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-studio" 
+                                           placeholder="studio">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-rating" class="col-md-4 control-label">User Rating:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-rating" placeholder="User Rating">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-rating" 
+                                           placeholder="User Rating">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-note" class="col-md-4 control-label">User Note:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-note" placeholder="User Note">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-note" 
+                                           placeholder="User Note">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-offset-4 col-md-8">
                                     <button type="submit" id="edit-button" class="btn btn-default" data-dismiss="modal">Edit DVD</button>
                                     <button type="button" class="btn btn-default"data-dismiss="modal">Cancel</button>
-                                    <input type="hidden" id="edit-dvd-id">
                                 </div>
                             </div>
                         </form>

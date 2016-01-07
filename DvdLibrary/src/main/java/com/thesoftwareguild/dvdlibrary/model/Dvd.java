@@ -6,18 +6,37 @@
 package com.thesoftwareguild.dvdlibrary.model;
 
 import java.util.Objects;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
  * @author bretthanson
  */
 public class Dvd {
+
     private int dvdId;
+    @NotEmpty(message = "You must supply a value for Title.")
+    @Length(max = 50, message = "Title must be no more than 50 characters in length.")
     private String title;
+    @NotEmpty(message = "You must supply a value for Release Date.")
+    @Length(max = 50, message = "Release Date must be no more than 50 characters in length.")
     private String released;
+    @NotEmpty(message = "You must supply a value for MPAA Rating.")
+    @Length(max = 50, message = "MPAA Rating must be no more than 50 characters in length.")
     private String mpaa;
+    @NotEmpty(message = "You must supply a value for Director.")
+    @Length(max = 50, message = "Director must be no more than 50 characters in length.")
     private String director;
+    @NotEmpty(message = "You must supply a value for Studio.")
+    @Length(max = 50, message = "Studio must be no more than 50 characters in length.")
     private String studio;
+    @NotEmpty(message = "You must supply a value for User Rating.")
+    @Length(max = 50, message = "User Rating must be no more than 50 characters in length.")
+    private String rating;
+    @NotEmpty(message = "You must supply a value for User Note.")
+    @Length(max = 50, message = "User Note must be no more than 50 characters in length.")
+    private String note;
 
     @Override
     public int hashCode() {
@@ -71,8 +90,6 @@ public class Dvd {
         }
         return true;
     }
-    private String rating;
-    private String note;
 
     public int getDvdId() {
         return dvdId;
@@ -138,4 +155,3 @@ public class Dvd {
         this.note = note;
     }
 }
-

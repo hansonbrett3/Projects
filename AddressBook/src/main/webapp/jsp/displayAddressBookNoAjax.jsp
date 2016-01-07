@@ -3,9 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -38,7 +35,7 @@
         </div>
         <div class="container">
             <h1>Address Book</h1>
-            <a href="displayAddressBookFormNoAjax">Add an Address</a><br/>
+            <a href="displayNewAddressFormNoAjax">Add an Address</a><br/>
             <hr/>
             <c:forEach var="address" items="${addressBook}">
                 <s:url value="deleteAddressNoAjax"

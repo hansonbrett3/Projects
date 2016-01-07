@@ -7,7 +7,7 @@
 
 $(document).ready(function () {
     loadAddresses();
-    
+
     $('#add-button').click(function (event) {
 
         event.preventDefault();
@@ -34,32 +34,16 @@ $(document).ready(function () {
             $('#add-city').val('');
             $('#add-state').val('');
             $('#add-zip').val('');
+            $('#validationErrors').empty();
             loadAddresses();
+        }).error(function (data, status) {
+            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
+                var errorDiv = $('#validationErrors');
+                errorDiv.append(validationError.message).append($('<br>'));
+            });
         });
     });
-    $('#edit-button').click(function (event) {
-        event.preventDefault();
-        $.ajax({
-            type: 'PUT',
-            url: 'address/' + $('#edit-address-id').val(),
-            data: JSON.stringify({
-                addressId: $('#edit-address-id').val(),
-                first: $('#edit-first').val(),
-                last: $('#edit-last').val(),
-                street: $('#edit-street').val(),
-                city: $('#edit-city').val(),
-                state: $('#edit-state').val(),
-                zip: $('#edit-zip').val()
-            }),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            'dataType': 'json'
-        }).success(function () {
-            loadAddresses();
-        });
-    });
+
     $('#search-button').click(function (event) {
         event.preventDefault();
         $.ajax({
@@ -85,7 +69,7 @@ $(document).ready(function () {
             $('#search-city').val('');
             $('#search-state').val('');
             $('#search-zip').val('');
-            
+
             fillAddressTable(data, status);
         });
     });
@@ -191,6 +175,30 @@ $('#editModal').on('show.bs.modal', function (event) {
         modal.find('#edit-city').val(address.city);
         modal.find('#edit-state').val(address.state);
         modal.find('#edit-zip').val(address.zip);
+    });
+});
+
+$('#edit-button').click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        type: 'PUT',
+        url: 'address/' + $('#edit-address-id').val(),
+        data: JSON.stringify({
+            addressId: $('#edit-address-id').val(),
+            first: $('#edit-first').val(),
+            last: $('#edit-last').val(),
+            street: $('#edit-street').val(),
+            city: $('#edit-city').val(),
+            state: $('#edit-state').val(),
+            zip: $('#edit-zip').val()
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        'dataType': 'json'
+    }).success(function () {
+        loadAddresses();
     });
 });
 var testAddressData = [

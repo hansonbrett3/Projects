@@ -25,6 +25,13 @@ public interface AddressBookDao {
     
     public Address getAddressById(int addressId);
     
-    public List<Address> searchAddresses(Map<SearchTerm, String> criteria);    
+    public List<Address> searchAddresses(Map<SearchTerm, String> criteria); 
+    
+    public List<Address> searchAddressesByFirst(String first);
+        
+    public List<Address> searchAddressByLast(String last);
+    
+    
     
 }
+

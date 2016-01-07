@@ -6,16 +6,34 @@
 package com.thesoftwareguild.addressbook.model;
 
 import java.util.Objects;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
  * @author bretthanson
  */
 public class Address {
+
     private int addressId;
+    @NotEmpty(message = "You must supply a value for First Name.")
+    @Length(max = 50, message = "First Name must be no more than 50 characters in length.")
     private String first;
+    @NotEmpty(message = "You must supply a value for Last Name.")
+    @Length(max = 50, message = "Last Name must be no more than 50 characters in length.")
     private String last;
+    @NotEmpty(message = "You must supply a value for Street Address.")
+    @Length(max = 50, message = "Street Address must be no more than 50 characters in length.")
     private String street;
+    @NotEmpty(message = "You must supply a value for City.")
+    @Length(max = 50, message = "City must be no more than 50 characters in length.")
+    private String city;
+    @NotEmpty(message = "You must supply a value for State.")
+    @Length(max = 50, message = "State must be no more than 50 characters in length.")
+    private String state;
+    @NotEmpty(message = "You must supply a value for Zip Code.")
+    @Length(max = 50, message = "Zip Code must be no more than 50 characters in length.")
+    private String zip;
 
     @Override
     public int hashCode() {
@@ -65,9 +83,6 @@ public class Address {
         }
         return true;
     }
-    private String city;
-    private String state;
-    private String zip;
 
     public int getAddressId() {
         return addressId;

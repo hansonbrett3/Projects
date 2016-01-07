@@ -107,4 +107,14 @@ public class AddressBookDaoInMemImpl implements AddressBookDao {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<Address> searchAddressesByFirst(String first) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Address> searchAddressByLast(String last) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

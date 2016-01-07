@@ -20,58 +20,85 @@
             <hr/>
         </div>
         <div class="container">
-            <h1>New Address Form</h1>
+            <h1>Edit Address Form</h1>
             <a href="displayAddressBookNoAjax">Address Book (No Ajax)</a><br/>
             <hr/>
-            <sf:form class="form-horizontal" role="form" modelAttribute="address"
-                     action="editAddressNoAjax" method="POST">
+            <sf:form class="form-horizontal" 
+                     role="form" 
+                     modelAttribute="address" 
+                     action="editAddressNoAjax"
+                     method="POST">
                 <div class="form-group">
                     <label for="add-first" class="col-md-4 control-label">First Name:</label>
                     <div class="col-md-8">
-                        <sf:input type="text" class="form-control" id="add-first"
-                                  path="first" placeholder="First Name"/>
+                        <sf:input type="text" 
+                                  class="form-control" 
+                                  id="add-first" 
+                                  path="first"
+                                  placeholder="First Name"/>
+                        <sf:errors path="first" cssclass="error"></sf:errors>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="add-last" class="col-md-4 control-label">Last Name:</label>
-                    <div class="col-md-8">
-                        <sf:input type="text" class="form-control" id="add-last"
-                                  path="last" placeholder="Last Name"/>
+                    <div class="form-group">
+                        <label for="add-last" class="col-md-4 control-label">Last Name:</label>
+                        <div class="col-md-8">
+                        <sf:input type="text" 
+                                  class="form-control" 
+                                  id="add-last" 
+                                  path="last"
+                                  placeholder="Last Name"/>
+                        <sf:errors path="last" cssclass="error"></sf:errors>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="add-street" class="col-md-4 control-label">Street Address:</label>
-                    <div class="col-md-8">
-                        <sf:input type="text" class="form-control" id="add-street"
-                                  path="street" placeholder="Street Address"/>
+                    <div class="form-group">
+                        <label for="add-street" class="col-md-4 control-label">Street Address:</label>
+                        <div class="col-md-8">
+                        <sf:input type="text" 
+                                  class="form-control" 
+                                  id="add-street" 
+                                  path="street"
+                                  placeholder="Street Address"/>
+                        <sf:errors path="street" cssclass="error"></sf:errors>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="add-city" class="col-md-4 control-label">City:</label>
-                    <div class="col-md-8">
-                        <sf:input type="text" class="form-control" id="add-city"
-                                  path="city" placeholder="City"/>
+                    <div class="form-group">
+                        <label for="add-city" class="col-md-4 control-label">City:</label>
+                        <div class="col-md-8">
+                        <sf:input type="text" 
+                                  class="form-control" 
+                                  id="add-city" 
+                                  path="city"
+                                  placeholder="City"/>
+                        <sf:errors path="city" cssclass="error"></sf:errors>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label for="add-state" class="col-md-4 control-label">State:</label>
+                        <div class="col-md-8">
+                        <sf:input type="text" 
+                                  class="form-control" 
+                                  id="add-state" 
+                                  path="state"
+                                  placeholder="State"/>
+                        <sf:errors path="state" cssclass="error"></sf:errors>
+                        </div>
+                    </div>Ï             
+                    <div class="form-group">
+                        <label for="add-zip" class="col-md-4 control-label">Zip Code:</label>
+                        <div class="col-md-8">
+                        <sf:input type="text" 
+                                  class="form-control" 
+                                  id="add-zip" 
+                                  path="zip"
+                                  placeholder="Zip Code"/>
+                        <sf:errors path="zip" cssclass="error"></sf:errors>
+                        </div>
                     </div>
-                </div>   
-                <div class="form-group">
-                    <label for="add-state" class="col-md-4 control-label">State:</label>
-                    <div class="col-md-8">
-                        <sf:input type="text" class="form-control" id="add-state"
-                                  path="state" placeholder="State"/>
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <button type="submit" id="add-button" class="btn btn-default">Edit Address</button>
+                        </div>
                     </div>
-                </div>                
-                <div class="form-group">
-                    <label for="add-zip" class="col-md-4 control-label">Zip Code:</label>
-                    <div class="col-md-8">
-                        <sf:input type="text" class="form-control" id="add-zip"
-                                  path="zip" placeholder="Zip Code"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-4 col-md-8">
-                        <button type="submit" id="add-button" class="btn btn-default">Add New Address</button>
-                    </div>
-                </div>
             </sf:form>
         </div>
         <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>

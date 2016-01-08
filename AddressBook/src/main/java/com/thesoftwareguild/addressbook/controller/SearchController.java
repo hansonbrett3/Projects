@@ -39,35 +39,46 @@ public class SearchController {
 
     @RequestMapping(value = "search/addresses", method = RequestMethod.POST)
     @ResponseBody
-    public List<Address> searchAddresses(@RequestBody Map<String, String> searchMap) {
+    public List<Address> searchAddresses(@RequestBody Map<String, String> searchMap) 
+    {
         Map<SearchTerm, String> criteriaMap = new HashMap<>();
 
         String currentTerm = searchMap.get("first");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.FIRST, currentTerm);
         }
+        
         currentTerm = searchMap.get("last");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.LAST, currentTerm);
         }
+        
         currentTerm = searchMap.get("street");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.STREET, currentTerm);
         }
+        
         currentTerm = searchMap.get("city");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.CITY, currentTerm);
         }
+        
         currentTerm = searchMap.get("state");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.STATE, currentTerm);
         }
+        
         currentTerm = searchMap.get("zip");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.ZIP, currentTerm);
         }
 
         return dao.searchAddresses(criteriaMap);
-
     }
 }

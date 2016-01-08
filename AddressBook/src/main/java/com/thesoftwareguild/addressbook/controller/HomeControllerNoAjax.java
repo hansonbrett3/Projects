@@ -28,24 +28,29 @@ public class HomeControllerNoAjax {
     private AddressBookDao dao;
 
     @Inject
-    public HomeControllerNoAjax(AddressBookDao dao) {
+    public HomeControllerNoAjax(AddressBookDao dao) 
+    {
         this.dao = dao;
     }
 
     @RequestMapping(value = "/displayAddressBookNoAjax", method = RequestMethod.GET)
-    public String displayAddressBookNoAjax(Model model) {
+    public String displayAddressBookNoAjax(Model model) 
+    {
         List<Address> aList = dao.getAllAddresses();
         model.addAttribute("addressBook", aList);
+        
         return "displayAddressBookNoAjax";
     }
 
     @RequestMapping(value = "displayNewAddressFormNoAjax", method = RequestMethod.GET)
-    public String displayNewAddressFormNoAjax() {
+    public String displayNewAddressFormNoAjax() 
+    {
         return "newAddressFormNoAjax";
     }
 
     @RequestMapping(value = "/addNewAddressNoAjax", method = RequestMethod.POST)
-    public String addNewAddressNoAjax(HttpServletRequest req) {
+    public String addNewAddressNoAjax(HttpServletRequest req) 
+    {
         String first = req.getParameter("first");
         String last = req.getParameter("last");
         String street = req.getParameter("street");
@@ -68,14 +73,17 @@ public class HomeControllerNoAjax {
     }
 
     @RequestMapping(value = "/deleteAddressNoAjax", method = RequestMethod.GET)
-    public String deleteAddressNoAjax(HttpServletRequest req) {
+    public String deleteAddressNoAjax(HttpServletRequest req) 
+    {
         int addressId = Integer.parseInt(req.getParameter("addressId"));
         dao.removeAddress(addressId);
+        
         return "redirect:displayAddressBookNoAjax";
     }
 
     @RequestMapping(value = "/displayEditAddressFormNoAjax", method = RequestMethod.GET)
-    public String displayEditAddressFormNoAjax(HttpServletRequest req, Model model) {
+    public String displayEditAddressFormNoAjax(HttpServletRequest req, Model model) 
+    {
 
         int addressId = Integer.parseInt(req.getParameter("addressId"));
         Address address = dao.getAddressById(addressId);
@@ -85,11 +93,14 @@ public class HomeControllerNoAjax {
     }
 
     @RequestMapping(value = "/editAddressNoAjax", method = RequestMethod.POST)
-    public String editAddressNoAjax(@Valid @ModelAttribute("address") Address address, BindingResult result) {
-        if (result.hasErrors()) {
+    public String editAddressNoAjax(@Valid @ModelAttribute("address") Address address, BindingResult result) 
+    {
+        if (result.hasErrors()) 
+        {
             return "editAddressFormNoAjax";
         }
         dao.updateAddress(address);
+        
         return "redirect:displayAddressBookNoAjax";
     }
 }

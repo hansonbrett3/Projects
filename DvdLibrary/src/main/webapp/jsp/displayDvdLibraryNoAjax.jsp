@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>DVD Library</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>DVD Library</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
               rel="stylesheet">
         <link rel="shortcut icon"
@@ -24,9 +24,6 @@
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/search">Search</a>
                     </li>
-                    <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/stats">Stats</a>
-                    </li>
                     <li role="presentation" class="active">
                         <a href="${pageContext.request.contextPath}/displayDvdLibraryNoAjax">DVD Library (No Ajax)</a>
                     </li>
@@ -34,6 +31,7 @@
             </div>
         </div>
         <div class="container">
+            <h1>DVD Library</h1>
             <a href="displayNewDvdFormNoAjax">Add a DVD</a><br/>
             <hr/>
             <c:forEach var="dvd" items="${dvdLibrary}">
@@ -45,9 +43,9 @@
                        var="editDvd_url">
                     <s:param name="dvdId" value="${dvd.dvdId}" />
                 </s:url>
-                Title: ${dvd.title} ${dvd.released} |
-                <a href="${deleteDvd_url}">Delete</a> |
-                <a href="${editDvd_url}">Edit</a><br/>
+                Title: ${dvd.title} |
+                <a href="${deleteDvd_url}">Delete</a><br/>
+                Release Date: ${dvd.released}<br/>
                 MPAA: ${dvd.mpaa}<br/>
                 Director: ${dvd.director}<br/>
                 Studio: ${dvd.studio}<br/>
@@ -60,3 +58,4 @@
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     </body>
 </html>
+

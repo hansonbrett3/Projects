@@ -26,4 +26,8 @@ public interface DvdLibraryDao {
     public Dvd getDvdById(int dvdId);
     
     public List<Dvd> searchDvds(Map<SearchTerm, String> criteria);
+    
+    public List<Dvd> searchDvdsByTitle(String title);
+        
+    public List<Dvd> searchDvdsByDirector(String director);
 }

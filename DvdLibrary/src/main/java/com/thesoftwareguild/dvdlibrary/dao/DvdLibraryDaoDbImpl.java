@@ -95,40 +95,48 @@ public class DvdLibraryDaoDbImpl implements DvdLibraryDao {
     }
 
     @Override
-    public List<Dvd> searchDvds(Map<SearchTerm, String> criteria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }   
-//        if (criteria == null || criteria.size() == 0) {
-//            return getAllDvds();
-//        }
-//
-//        StringBuilder query = new StringBuilder("SELECT * FROM dvds WHERE ");
-//
-//        int numParams = criteria.size();
-//        int paramPosition = 0;
-//
-//        String[] paramVals = new String[numParams];
-//
-//        Set<SearchTerm> keyset = criteria.keySet();
-//        Iterator<SearchTerm> iter = keyset.iterator();
-//
-//        while (iter.hasNext()) {
-//            SearchTerm currentKey = iter.next();
-//            String currentValue = criteria.get(currentKey);
-//
-//            if (paramPosition > 0) {
-//                query.append(" and ");
-//            }
-//
-//            query.append(currentKey);
-//            query.append(" =? ");
-//
-//            paramVals[paramPosition] = currentValue;
-//            paramPosition++;
-//        }
-//
-//        return jdbcTemplate.query(query.toString(), new DvdMapper(), paramVals);
-//    }
+    public List<Dvd> searchDvds(Map<SearchTerm, String> criteria) { 
+        if (criteria == null || criteria.size() == 0) {
+            return getAllDvds();
+        }
+
+        StringBuilder query = new StringBuilder("SELECT * FROM dvds WHERE ");
+
+        int numParams = criteria.size();
+        int paramPosition = 0;
+
+        String[] paramVals = new String[numParams];
+
+        Set<SearchTerm> keyset = criteria.keySet();
+        Iterator<SearchTerm> iter = keyset.iterator();
+
+        while (iter.hasNext()) {
+            SearchTerm currentKey = iter.next();
+            String currentValue = criteria.get(currentKey);
+
+            if (paramPosition > 0) {
+                query.append(" and ");
+            }
+
+            query.append(currentKey);
+            query.append(" =? ");
+
+            paramVals[paramPosition] = currentValue;
+            paramPosition++;
+        }
+
+        return jdbcTemplate.query(query.toString(), new DvdMapper(), paramVals);
+    }
+
+    @Override
+    public List<Dvd> searchDvdsByTitle(String title) {
+        return jdbcTemplate.query(SQL_SELECT_DVDS_BY_TITLE, new DvdMapper(), title);
+    }
+
+    @Override
+    public List<Dvd> searchDvdsByDirector(String director) {
+        return jdbcTemplate.query(SQL_SELECT_DVDS_BY_DIRECTOR, new DvdMapper(), director);
+    }
 
     private static final class DvdMapper implements RowMapper<Dvd> {
 

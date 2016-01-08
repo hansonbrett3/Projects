@@ -29,50 +29,54 @@ public class HomeController {
     private AddressBookDao dao;
 
     @Inject
-    public HomeController(AddressBookDao dao) {
+    public HomeController(AddressBookDao dao) 
+    {
         this.dao = dao;
     }
 
     @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
-    public String displayHomePage() {
+    public String displayHomePage() 
+    {
         return "home";
     }
 
 // RETRIEVING AN ADDRESS
     @RequestMapping(value = "/address/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Address getAddress(@PathVariable("id") int id) {
+    @ResponseBody public Address getAddress(@PathVariable("id") int id) 
+    {
         return dao.getAddressById(id);
     }
 
 // CREATING AN ADDRESS
     @RequestMapping(value = "/address", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public Address createAddress(@Valid @RequestBody Address address) {
+    @ResponseBody public Address createAddress(@Valid @RequestBody Address address) 
+    {
         dao.addAddress(address);
         return address;
     }
 
 // DELETING AN ADDRESS
     @RequestMapping(value = "/address/{id}", method = RequestMethod.DELETE)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAddress(@PathVariable("id") int id) {
+    @ResponseStatus(HttpStatus.NO_CONTENT) 
+    public void deleteAddress(@PathVariable("id") int id) 
+    {
         dao.removeAddress(id);
     }
 
 // UPDATING AN ADDRESS
     @RequestMapping(value = "/address/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void putAddress(@PathVariable("id") int id, @RequestBody Address address) {
+    public void putAddress(@PathVariable("id") int id, @RequestBody Address address) 
+    {
         address.setAddressId(id);
         dao.updateAddress(address);
     }
 
 // RETRIEVING ALL ADDRESSES
     @RequestMapping(value = "/addresses", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Address> getAllAddresses() {
+    @ResponseBody public List<Address> getAllAddresses() 
+    {
         return dao.getAllAddresses();
     }
 }

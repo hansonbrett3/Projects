@@ -25,9 +25,6 @@
                         <a href="${pageContext.request.contextPath}/search">Search</a>
                     </li>
                     <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/stats">Stats</a>
-                    </li>
-                    <li role="presentation">
                         <a href="${pageContext.request.contextPath}/displayDvdLibraryNoAjax">DVD Library (No Ajax)</a>
                     </li>
                 </ul>
@@ -182,7 +179,8 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span></button>
+                            <span class="sr-only">Close</span>
+                        </button>
                         <h4 class="modal-title" id="detailsModalLabel">Edit DVD</h4>
                     </div>
                     <div class="modal-body">
@@ -254,7 +252,8 @@
                             <div class="form-group">
                                 <div class="col-md-offset-4 col-md-8">
                                     <button type="submit" id="edit-button" class="btn btn-default" data-dismiss="modal">Edit DVD</button>
-                                    <button type="button" class="btn btn-default"data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    <input type="hidden" id="edit-dvd-id">
                                 </div>
                             </div>
                         </form>

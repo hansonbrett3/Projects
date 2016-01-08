@@ -6,10 +6,9 @@
 
 $(document).ready(function () {
     loadDvds();
+
     $('#add-button').click(function (event) {
-
         event.preventDefault();
-
         $.ajax({
             type: 'POST',
             url: 'dvd',
@@ -22,10 +21,11 @@ $(document).ready(function () {
                 rating: $('#add-rating').val(),
                 note: $('#add-note').val()
             }),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
+            headers:
+                    {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
             'dataType': 'json'
         }).success(function (data, status) {
             $('#add-title').val('');
@@ -38,9 +38,11 @@ $(document).ready(function () {
             $('#validationErrors').empty();
             loadDvds();
         }).error(function (data, status) {
-            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
+            $('#validationErrors').empty();
+            $.each(data.responseJSON.validationErrors, function (index, validationError) {
                 var errorDiv = $('#validationErrors');
                 errorDiv.append(validationError.message).append($('<br>'));
+                $('#' + validationError.fieldName).text(validationError.message);
             });
         });
     });
@@ -59,10 +61,11 @@ $(document).ready(function () {
                 rating: $('#edit-rating').val(),
                 note: $('#edit-note').val()
             }),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
+            headers:
+                    {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
             'dataType': 'json'
         }).success(function () {
             loadDvds();
@@ -114,8 +117,10 @@ function loadDvds() {
 }
 
 function fillDvdTable(dvdLibrary, status) {
+
     clearDvdTable();
     var dTable = $('#contentRows');
+
     $.each(dvdLibrary, function (index, dvd) {
         dTable.append($('<tr>')
                 .append($('<td>')
@@ -125,7 +130,7 @@ function fillDvdTable(dvdLibrary, status) {
                                     'data-toggle': 'modal',
                                     'data-target': '#detailsModal'
                                 })
-                                .text(dvd.title + ' ' + dvd.mpaa)
+                                .text(dvd.title + ' | ' + dvd.mpaa)
                                 )
                         )
                 .append($('<td>').text(dvd.released))

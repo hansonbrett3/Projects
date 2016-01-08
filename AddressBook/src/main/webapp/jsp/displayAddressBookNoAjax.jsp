@@ -24,9 +24,6 @@
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/search">Search</a>
                     </li>
-                    <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/stats">Stats</a>
-                    </li>
                     <li role="presentation" class="active">
                         <a href="${pageContext.request.contextPath}/displayAddressBookNoAjax">Address Book (No Ajax)</a>
                     </li>
@@ -47,8 +44,7 @@
                     <s:param name="addressId" value="${address.addressId}" />
                 </s:url>
                 Name: ${address.first} ${address.last} |
-                <a href="${deleteAddress_url}">Delete</a> | 
-                <a href="${editAddress_url}">Edit</a><br/>
+                <a href="${deleteAddress_url}">Delete</a><br/>
                 Street: ${address.street}<br/>
                 City: ${address.city}<br/>
                 State: ${address.state}<br/>

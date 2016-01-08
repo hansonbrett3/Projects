@@ -25,9 +25,6 @@
                         <a href="${pageContext.request.contextPath}/search">Search</a>
                     </li>
                     <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/stats">Stats</a>
-                    </li>
-                    <li role="presentation">
                         <a href="${pageContext.request.contextPath}/displayAddressBookNoAjax">Address Book (No Ajax)</a>
                     </li>
                 </ul>
@@ -106,7 +103,7 @@
                             <div class="col-md-offset-4 col-md-8">
                                 <button type="submit"
                                         id="add-button"
-                                        class="btn btn-default">Create Address</button>
+                                        class="btn btn-default">Add New Address</button>
                             </div>
                         </div>
                     </form>
@@ -169,7 +166,8 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span></button>
+                            <span class="sr-only">Close</span>
+                        </button>
                         <h4 class="modal-title" id="detailsModalLabel">Edit Address</h4>
                     </div>
                     <div class="modal-body">
@@ -178,43 +176,62 @@
                             <div class="form-group">
                                 <label for="edit-first" class="col-md-4 control-label">First Name:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-first"placeholder="First Name">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-first"
+                                           placeholder="First Name">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-last" class="col-md-4 control-label">Last Name:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-last" placeholder="Last Name">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-last" 
+                                           placeholder="Last Name">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-street" class="col-md-4 control-label">Street Address:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-street" placeholder="Street Address">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-street" 
+                                           placeholder="Street Address">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-city" class="col-md-4 control-label">City:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-city" placeholder="City">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-city" 
+                                           placeholder="City">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-state" class="col-md-4 control-label">State:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-state" placeholder="state">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-state" 
+                                           placeholder="State">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-zip" class="col-md-4 control-label">Zip Code:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-zip" placeholder="Zip Code">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="edit-zip" 
+                                           placeholder="Zip Code">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-offset-4 col-md-8">
                                     <button type="submit" id="edit-button" class="btn btn-default" data-dismiss="modal">Edit Address</button>
-                                    <button type="button" class="btn btn-default"data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    <input type="hidden" id="edit-address-id">
                                 </div>
                             </div>
                         </form>

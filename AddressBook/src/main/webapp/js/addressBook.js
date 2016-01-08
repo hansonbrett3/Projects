@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 
-
 $(document).ready(function () {
     loadAddresses();
 
     $('#add-button').click(function (event) {
-
         event.preventDefault();
         $.ajax({
             type: 'POST',
@@ -22,10 +20,11 @@ $(document).ready(function () {
                 state: $('#add-state').val(),
                 zip: $('#add-zip').val()
             }),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
+            headers:
+                    {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
             'dataType': 'json'
         }).success(function (data, status) {
             $('#add-first').val('');
@@ -37,13 +36,38 @@ $(document).ready(function () {
             $('#validationErrors').empty();
             loadAddresses();
         }).error(function (data, status) {
-            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
+            $('#validationErrors').empty();
+            $.each(data.responseJSON.validationErrors, function (index, validationError) {
                 var errorDiv = $('#validationErrors');
                 errorDiv.append(validationError.message).append($('<br>'));
+                $('#' + validationError.fieldName).text(validationError.message);
             });
         });
     });
-
+    $('#edit-button').click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'PUT',
+            url: 'address/' + $('#edit-address-id').val(),
+            data: JSON.stringify({
+                addressId: $('#edit-address-id').val(),
+                first: $('#edit-first').val(),
+                last: $('#edit-last').val(),
+                street: $('#edit-street').val(),
+                city: $('#edit-city').val(),
+                state: $('#edit-state').val(),
+                zip: $('#edit-zip').val()
+            }),
+            headers:
+                    {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+            'dataType': 'json'
+        }).success(function () {
+            loadAddresses();
+        });
+    });
     $('#search-button').click(function (event) {
         event.preventDefault();
         $.ajax({
@@ -87,8 +111,10 @@ function loadAddresses() {
 }
 
 function fillAddressTable(addressBook, status) {
+
     clearAddressTable();
     var aTable = $('#contentRows');
+
     $.each(addressBook, function (index, address) {
         aTable.append($('<tr>')
                 .append($('<td>')
@@ -178,29 +204,29 @@ $('#editModal').on('show.bs.modal', function (event) {
     });
 });
 
-$('#edit-button').click(function (event) {
-    event.preventDefault();
-    $.ajax({
-        type: 'PUT',
-        url: 'address/' + $('#edit-address-id').val(),
-        data: JSON.stringify({
-            addressId: $('#edit-address-id').val(),
-            first: $('#edit-first').val(),
-            last: $('#edit-last').val(),
-            street: $('#edit-street').val(),
-            city: $('#edit-city').val(),
-            state: $('#edit-state').val(),
-            zip: $('#edit-zip').val()
-        }),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        'dataType': 'json'
-    }).success(function () {
-        loadAddresses();
-    });
-});
+//$('#edit-button').click(function (event) {
+//    event.preventDefault();
+//    $.ajax({
+//        type: 'PUT',
+//        url: 'address/' + $('#edit-address-id').val(),
+//        data: JSON.stringify({
+//            addressId: $('#edit-address-id').val(),
+//            first: $('#edit-first').val(),
+//            last: $('#edit-last').val(),
+//            street: $('#edit-street').val(),
+//            city: $('#edit-city').val(),
+//            state: $('#edit-state').val(),
+//            zip: $('#edit-zip').val()
+//        }),
+//        headers: {
+//            'Accept': 'application/json',
+//            'Content-Type': 'application/json'
+//        },
+//        'dataType': 'json'
+//    }).success(function () {
+//        loadAddresses();
+//    });
+//});
 var testAddressData = [
     {
         addressId: 1,

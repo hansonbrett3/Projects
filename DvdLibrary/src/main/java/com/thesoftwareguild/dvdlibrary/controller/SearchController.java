@@ -28,48 +28,65 @@ public class SearchController {
     private DvdLibraryDao dao;
 
     @Inject
-    public SearchController(DvdLibraryDao dao) {
+    public SearchController(DvdLibraryDao dao) 
+    {
         this.dao = dao;
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String displaySeachPage() {
+    public String displaySeachPage() 
+    {
         return "search";
     }
 
     @RequestMapping(value = "search/dvds", method = RequestMethod.POST)
     @ResponseBody
-    public List<Dvd> searchDvds(@RequestBody Map<String, String> searchMap) {
+    public List<Dvd> searchDvds(@RequestBody Map<String, String> searchMap) 
+    {
         Map<SearchTerm, String> criteriaMap = new HashMap<>();
 
-        String currentTerm = searchMap.get("title");
-        if (!currentTerm.isEmpty()) {
+        String currentTerm = searchMap.get("title");       
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.TITLE, currentTerm);
         }
+        
         currentTerm = searchMap.get("released");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.RELEASED, currentTerm);
         }
+        
         currentTerm = searchMap.get("mpaa");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.MPAA, currentTerm);
         }
+        
         currentTerm = searchMap.get("director");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.DIRECTOR, currentTerm);
         }
+        
         currentTerm = searchMap.get("studio");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.STUDIO, currentTerm);
         }
+        
         currentTerm = searchMap.get("rating");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.RATING, currentTerm);
         }
+        
         currentTerm = searchMap.get("note");
-        if (!currentTerm.isEmpty()) {
+        if (!currentTerm.isEmpty()) 
+        {
             criteriaMap.put(SearchTerm.NOTE, currentTerm);
-        }       
+        }
+        
         return dao.searchDvds(criteriaMap);
     }
 }

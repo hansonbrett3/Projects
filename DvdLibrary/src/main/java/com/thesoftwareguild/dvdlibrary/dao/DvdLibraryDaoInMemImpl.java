@@ -114,4 +114,14 @@ public class DvdLibraryDaoInMemImpl implements DvdLibraryDao {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<Dvd> searchDvdsByTitle(String title) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Dvd> searchDvdsByDirector(String director) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

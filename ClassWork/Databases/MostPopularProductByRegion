@@ -1,0 +1,31 @@
+-- MOST POPULAR PRODUCTS BY REGION
+DROP TABLE IF EXISTS Region_Product_Count;
+
+CREATE TABLE IF NOT EXISTS Region_Product_Count
+(
+	Region varchar(20),
+	ProductID INT(11),
+	ProductName varchar(255),
+	ProductCount INT(11)
+);
+
+INSERT INTO Region_Product_Count(Region, ProductID, ProductName, ProductCount)
+SELECT o.ShipRegion, p.productID, p.ProductName, count(*) ProductCount FROM Products p join
+Order_Details od on p.ProductID = od.ProductID join
+Orders o on od.OrderID = o.OrderID
+WHERE ShipRegion IS NOT NULL
+GROUP BY o.ShipRegion, p.productID, p.ProductName
+ORDER BY ProductCount DESC;
+
+SELECT * FROM Region_Product_Count rc join
+(SELECT Region, MAX(ProductCount) as MaxCount FROM Region_Product_Count
+GROUP BY Region) filtered on rc.Region = filtered.Region AND rc.ProductCount = filtered.MaxCount
+ORDER BY rc.Region;
+
+DROP TABLE IF exists Region_Product_Count;
+
+-- THE SELECT * FROM ... q; is creating a temporary table (with an alias q), so we are able to maniuplate values 
+-- from the temporary table 
+
+-- SELECT * FROM
+-- THEN START BUILDING JOINS

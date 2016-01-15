@@ -1,0 +1,45 @@
+CREATE TABLE IF NOT EXISTS `users`
+(	`user_id` int(11) NOT NULL AUTO_INCREMENT,
+	`usernmane` varchar(20)  NOT NULL,
+	`password` varchar(20) NOT NULL,
+	`enabled` tinyint(1) NOT NULL,
+	PRIMARY KEY (`user_id`),
+	KEY `username` (`username`)
+) ENGINE=InnoDB default charset=latin1 auto_increment=3;
+
+INSERT INTO `users` (`user_id`, `username`, `password`, `enabled`)
+VALUES 
+(1, 'test', 'password', 1),
+(2, 'test2', 'password', 1);
+
+CREATE TABLE IF NOT EXISTS `roles`
+(
+	`role_id` int(11) NOT NULL auto_increment,
+	`role_name` varchar(20) NOT NULL,
+	primary key(role_id) 
+) ENGINE=InnoDB default charset=latin1 auto_increment=3;
+
+INSERT INTO `roles` (role_id, role_name)
+values
+(1, 'ROLE_ADMIN'),
+(2, 'ROLE_USER');
+
+CREATE TABLE IF NOT EXISTS `authorities`
+(
+	user_id int(11) NOT NULL,
+	role_id int(11) NOT NULL,
+	KEY user_id(user_id),
+	KEY role_id(role_id)
+) ENGINE=InnoDB default charset=latin1;
+
+ALTER TABLE users_roles
+	ADD CONSTRAINT `fk_users_roles_user_id` FOREIGN KEY (user_id) REFERENCES users(user_id),
+	ADD CONSTRAINT `fk_users_roles_role_id` FOREIGN KEY (role_id) REFERENCES roles(role_id);
+
+INSERT INTO users_roles (user_id, role_id)
+values
+(1,1),
+(1,2),
+(2,2);
+
+

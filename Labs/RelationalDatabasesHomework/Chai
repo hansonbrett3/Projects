@@ -1,0 +1,7 @@
+SELECT *, ProductName, CompanyName
+FROM Order_Details
+LEFT JOIN Products
+ON Order_Details.ProductID = Products.ProductID
+Left JOIN Suppliers
+ON Products.SupplierID = Suppliers.SupplierID
+WHERE ProductName = 'Chai';

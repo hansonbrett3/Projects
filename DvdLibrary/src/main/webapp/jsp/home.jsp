@@ -31,7 +31,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <h2>My Dvds</h2>
+                    <h2>My DVDs</h2>
                     <table id="dvdTable" class="table table-hover">
                         <tr>
                             <th width="40%">Title</th>

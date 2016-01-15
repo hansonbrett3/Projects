@@ -1,0 +1,102 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.thesoftwareguild.flooringmastery.dto;
+
+import com.thesoftwareguild.flooringmastery.dto.Product;
+
+/**
+ *
+ * @author apprentice
+ */
+public class Order {
+    
+    private int orderNumber;
+    private String customerName;
+    private String state;
+    private double area;
+    private double total;
+    private Product product;
+    private String date;
+    private char flag;
+
+    public Order(int orderNumber, String customerName, String state, double area, double total, Product product, String date, char flag) {
+        this.orderNumber = orderNumber;
+        this.customerName = customerName;
+        this.state = state;
+        this.area = area;
+        this.total = total;
+        this.product = product;
+        this.date = date;
+        this.flag = flag;
+    }
+
+    public char getFlag() {
+        return flag;
+    }
+
+    public void setFlag(char flag) {
+        this.flag = flag;
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public void setArea(double area) {
+        this.area = area;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+    
+    
+    
+}

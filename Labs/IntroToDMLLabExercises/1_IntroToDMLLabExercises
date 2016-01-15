@@ -1,0 +1,3 @@
+SELECT *
+FROM Employee
+Where EmpID = '11';

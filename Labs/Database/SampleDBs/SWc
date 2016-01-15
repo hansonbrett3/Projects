@@ -1,0 +1,22 @@
+
+-- Sally (employeeID11) --> Change last name to Green
+UPDATE Employee
+SET LastName = 'Green'
+WHERE EmpId = 11;
+
+-- Update all employees in the Spokane location status field to external
+
+
+
+-- For location Seattle update Street field to read 111 1st Ave
+
+
+
+-- Change Boston Record Grants to 20,000 (2 records)
+Update grants
+SET Grant.empId=Employee
+
+
+
+-- Delete all records where duration is more than 20 hours
+

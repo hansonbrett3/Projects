@@ -1,0 +1,17 @@
+UPDATE Employee
+SET LastName='Green'
+WHERE EmpID=11;
+
+SELECT * 
+FROM Employee as e
+	INNER JOIN Location AS lo ON e.LocationID = lo.LocationID
+WHERE City='Spokane';
+
+UPDATE Employee
+SET Status='External'
+WHERE LocationID=4;
+
+UPDATE Location
+SET Street='111 1st Ave.'
+WHERE City='Seattle';
+

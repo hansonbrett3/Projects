@@ -27,9 +27,11 @@ public class RestValidationHandler {
     @ResponseBody
     public ValidationErrorContainer processValidationErrors(MethodArgumentNotValidException e) 
     {
+
         BindingResult result = e.getBindingResult();
         List<FieldError> fieldErrors = result.getFieldErrors();
         ValidationErrorContainer errors = new ValidationErrorContainer();
+        
         for (FieldError currentError : fieldErrors) 
         {
             errors.addValidationError(currentError.getField(), currentError.getDefaultMessage());

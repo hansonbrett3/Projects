@@ -16,12 +16,12 @@ public class ValidationErrorContainer {
 
     private List<ValidationError> validationErrors = new ArrayList<>();
 
+    public List<ValidationError> getValidationErrors() {
+        return validationErrors;
+    }
+
     public void addValidationError(String field, String message) {
         ValidationError error = new ValidationError(field, message);
         validationErrors.add(error);
-    }
-
-    public List<ValidationError> getFieldErrors() {
-        return validationErrors;
     }
 }

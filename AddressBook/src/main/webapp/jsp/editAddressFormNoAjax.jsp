@@ -37,7 +37,7 @@
                                   path="first"
                                   placeholder="First Name"/>
                         <sf:errors path="first" 
-                                   cssclass="error">                           
+                                   cssClass="error">                           
                         </sf:errors>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                   path="last"
                                   placeholder="Last Name"/>
                         <sf:errors path="last" 
-                                   cssclass="error">                          
+                                   cssClass="error">                          
                         </sf:errors>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                                   path="street"
                                   placeholder="Street Address"/>
                         <sf:errors path="street" 
-                                   cssclass="error">                           
+                                   cssClass="error">                           
                         </sf:errors>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                   path="city"
                                   placeholder="City"/>
                         <sf:errors path="city" 
-                                   cssclass="error">                            
+                                   cssClass="error">                            
                         </sf:errors>
                         </div>
                     </div> 
@@ -89,10 +89,10 @@
                                   path="state"
                                   placeholder="State"/>
                         <sf:errors path="state" 
-                                   cssclass="error">                           
+                                   cssClass="error">                           
                         </sf:errors>
                         </div>
-                    </div>Ï             
+                    </div>            
                     <div class="form-group">
                         <div for="add-zip" class="col-md-4 control-label">Zip Code:</div>
                         <div class="col-md-8">
@@ -102,7 +102,7 @@
                                   path="zip"
                                   placeholder="Zip Code"/>
                         <sf:errors path="zip" 
-                                   cssclass="error">                           
+                                   cssClass="error">                           
                         </sf:errors>
                         </div>
                     </div>

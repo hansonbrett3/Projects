@@ -52,6 +52,10 @@
                                        class="form-control"
                                        id="add-first"
                                        placeholder="First Name"/>
+                                <div id="first" 
+                                     style="color:red" 
+                                     class="form-error">                                        
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -61,6 +65,10 @@
                                        class="form-control"
                                        id="add-last"
                                        placeholder="Last Name"/>
+                                <div id="last" 
+                                     style="color:red" 
+                                     class="form-error">                                        
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -70,6 +78,10 @@
                                        class="form-control"
                                        id="add-street"
                                        placeholder="Street Address"/>
+                                <div id="street" 
+                                     style="color:red" 
+                                     class="form-error">                                        
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -79,6 +91,10 @@
                                        class="form-control"
                                        id="add-city"
                                        placeholder="City"/>
+                                <div id="city" 
+                                     style="color:red" 
+                                     class="form-error">                                        
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -88,6 +104,10 @@
                                        class="form-control"
                                        id="add-state"
                                        placeholder="State"/>
+                                <div id="state" 
+                                     style="color:red" 
+                                     class="form-error">                                        
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -97,6 +117,10 @@
                                        class="form-control"
                                        id="add-zip"
                                        placeholder="Zip Code"/>
+                                <div id="zip" 
+                                     style="color:red" 
+                                     class="form-error">                                        
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">

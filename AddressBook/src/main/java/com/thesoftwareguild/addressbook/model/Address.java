@@ -17,22 +17,22 @@ public class Address {
 
     private int addressId;
     @NotEmpty(message = "You must supply a value for First Name.")
-    @Length(max = 50, message = "First Name must be no more than 50 characters in length.")
+    @Length(max = 30, message = "First Name must be no more than 30 characters in length.")
     private String first;
     @NotEmpty(message = "You must supply a value for Last Name.")
-    @Length(max = 50, message = "Last Name must be no more than 50 characters in length.")
+    @Length(max = 30, message = "Last Name must be no more than 30 characters in length.")
     private String last;
     @NotEmpty(message = "You must supply a value for Street Address.")
-    @Length(max = 50, message = "Street Address must be no more than 50 characters in length.")
+    @Length(max = 30, message = "Street Address must be no more than 30 characters in length.")
     private String street;
     @NotEmpty(message = "You must supply a value for City.")
-    @Length(max = 50, message = "City must be no more than 50 characters in length.")
+    @Length(max = 20, message = "City must be no more than 20 characters in length.")
     private String city;
     @NotEmpty(message = "You must supply a value for State.")
-    @Length(max = 50, message = "State must be no more than 50 characters in length.")
+    @Length(max = 20, message = "State must be no more than 20 characters in length.")
     private String state;
     @NotEmpty(message = "You must supply a value for Zip Code.")
-    @Length(max = 50, message = "Zip Code must be no more than 50 characters in length.")
+    @Length(max = 5, message = "Zip Code must be no more than 5 characters in length (Ex. 44118).")
     private String zip;
 
     @Override

@@ -35,16 +35,15 @@
             <a href="displayNewDvdFormNoAjax">Add a DVD</a><br/>
             <hr/>
             <c:forEach var="dvd" items="${dvdLibrary}">
-                <s:url value="deleteDvdNoAjax"
-                       var="deleteDvd_url">
+                <s:url value="deleteDvdNoAjax" var="deleteDvd_url">
                     <s:param name="dvdId" value="${dvd.dvdId}" />
                 </s:url>
-                <s:url value="displayEditDvdFormNoAjax"
-                       var="editDvd_url">
+                <s:url value="displayEditDvdFormNoAjax" var="editDvd_url">
                     <s:param name="dvdId" value="${dvd.dvdId}" />
                 </s:url>
                 Title: ${dvd.title} |
-                <a href="${deleteDvd_url}">Delete</a><br/>
+                <a href="${deleteDvd_url}">Delete</a> |
+                <a href="${editDvd_url}">Edit</a><br/>
                 Release Date: ${dvd.released}<br/>
                 MPAA: ${dvd.mpaa}<br/>
                 Director: ${dvd.director}<br/>

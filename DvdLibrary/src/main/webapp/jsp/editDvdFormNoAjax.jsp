@@ -37,7 +37,7 @@
                                   path="title"
                                   placeholder="Title"/>
                         <sf:errors path="title" 
-                                   cssclass="error">                         
+                                   cssClass="error">                         
                         </sf:errors>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                   path="released" 
                                   placeholder="Release Date" />
                         <sf:errors path="released" 
-                                   cssclass="error">                          
+                                   cssClass="error">                          
                         </sf:errors>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                                   path="mpaa" 
                                   placeholder="MPAA Rating" />
                         <sf:errors path="mpaa" 
-                                   cssclass="error">                           
+                                   cssClass="error">                           
                         </sf:errors>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                   path="director" 
                                   placeholder="Director Name" />
                         <sf:errors path="director" 
-                                   cssclass="error">                          
+                                   cssClass="error">                          
                         </sf:errors>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                                   path="studio" 
                                   placeholder="Studio" />
                         <sf:errors path="studio" 
-                                   cssclass="error">                           
+                                   cssClass="error">                           
                         </sf:errors>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                                   path="rating" 
                                   placeholder="User Rating" />
                         <sf:errors path="rating" 
-                                   cssclass="error">                          
+                                   cssClass="error">                          
                         </sf:errors>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                                   path="note" 
                                   placeholder="Note" />
                         <sf:errors path="note" 
-                                   cssclass="error">                           
+                                   cssClass="error">                           
                         </sf:errors>
                         </div>
                     </div>

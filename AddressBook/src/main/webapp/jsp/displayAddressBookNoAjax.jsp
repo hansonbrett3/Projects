@@ -35,16 +35,15 @@
             <a href="displayNewAddressFormNoAjax">Add an Address</a><br/>
             <hr/>
             <c:forEach var="address" items="${addressBook}">
-                <s:url value="deleteAddressNoAjax"
-                       var="deleteAddress_url">
+                <s:url value="deleteAddressNoAjax" var="deleteAddress_url">
                     <s:param name="addressId" value="${address.addressId}" />
                 </s:url>
-                <s:url value="displayEditAddressFormNoAjax"
-                       var="editAddress_url">
+                <s:url value="displayEditAddressFormNoAjax" var="editAddress_url">
                     <s:param name="addressId" value="${address.addressId}" />
                 </s:url>
                 Name: ${address.first} ${address.last} |
-                <a href="${deleteAddress_url}">Delete</a><br/>
+                <a href="${deleteAddress_url}">Delete</a> |
+                <a href="${editAddress_url}">Edit</a><br/>
                 Street: ${address.street}<br/>
                 City: ${address.city}<br/>
                 State: ${address.state}<br/>

@@ -25,16 +25,16 @@ public class RestValidationHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public ValidationErrorContainer
-            processValidationErrors(MethodArgumentNotValidException e) {
+    public ValidationErrorContainer processValidationErrors(MethodArgumentNotValidException e) 
+    {
 
         BindingResult result = e.getBindingResult();
         List<FieldError> fieldErrors = result.getFieldErrors();
-
         ValidationErrorContainer errors = new ValidationErrorContainer();
-        for (FieldError currentError : fieldErrors) {
-            errors.addValidationError(currentError.getField(),
-                    currentError.getDefaultMessage());
+        
+        for (FieldError currentError : fieldErrors) 
+        {
+            errors.addValidationError(currentError.getField(), currentError.getDefaultMessage());
         }
         return errors;
     }

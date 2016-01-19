@@ -20,22 +20,22 @@ public class Dvd {
     @Length(max = 50, message = "Title must be no more than 50 characters in length.")
     private String title;
     @NotEmpty(message = "You must supply a value for Release Date.")
-    @Length(max = 50, message = "Release Date must be no more than 50 characters in length.")
+    @Length(max = 4, message = "Release Date must be no more than 4 characters in length (Ex. 1999).")
     private String released;
     @NotEmpty(message = "You must supply a value for MPAA Rating.")
-    @Length(max = 50, message = "MPAA Rating must be no more than 50 characters in length.")
+    @Length(max = 5, message = "MPAA Rating must be no more than 5 characters in length.")
     private String mpaa;
     @NotEmpty(message = "You must supply a value for Director.")
-    @Length(max = 50, message = "Director must be no more than 50 characters in length.")
+    @Length(max = 25, message = "Director must be no more than 25 characters in length.")
     private String director;
     @NotEmpty(message = "You must supply a value for Studio.")
-    @Length(max = 50, message = "Studio must be no more than 50 characters in length.")
+    @Length(max = 30, message = "Studio must be no more than 30 characters in length.")
     private String studio;
     @NotEmpty(message = "You must supply a value for User Rating.")
-    @Length(max = 50, message = "User Rating must be no more than 50 characters in length.")
+    @Length(max = 30, message = "User Rating must be no more than 30 characters in length.")
     private String rating;
     @NotEmpty(message = "You must supply a value for User Note.")
-    @Length(max = 50, message = "User Note must be no more than 50 characters in length.")
+    @Length(max =20, message = "User Note must be no more than 20 characters in length.")
     private String note;
 
     @Override

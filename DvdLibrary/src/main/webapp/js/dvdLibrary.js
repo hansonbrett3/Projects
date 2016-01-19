@@ -35,7 +35,9 @@ $(document).ready(function () {
             $('#add-studio').val('');
             $('#add-rating').val('');
             $('#add-note').val('');
+
             $('#validationErrors').empty();
+            $('.form-error').text('');
             loadDvds();
         }).error(function (data, status) {
             $('#validationErrors').empty();
@@ -45,32 +47,9 @@ $(document).ready(function () {
                 $('#' + validationError.fieldName).text(validationError.message);
             });
         });
+
     });
-    $('#edit-button').click(function (event) {
-        event.preventDefault();
-        $.ajax({
-            type: 'PUT',
-            url: 'dvd/' + $('#edit-dvd-id').val(),
-            data: JSON.stringify({
-                dvdId: $('#edit-dvd-id').val(),
-                title: $('#edit-title').val(),
-                released: $('#edit-released').val(),
-                mpaa: $('#edit-mpaa').val(),
-                director: $('#edit-director').val(),
-                studio: $('#edit-studio').val(),
-                rating: $('#edit-rating').val(),
-                note: $('#edit-note').val()
-            }),
-            headers:
-                    {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-            'dataType': 'json'
-        }).success(function () {
-            loadDvds();
-        });
-    });
+
     $('#search-button').click(function (event) {
         event.preventDefault();
         $.ajax({
@@ -209,6 +188,32 @@ $('#editModal').on('show.bs.modal', function (event) {
         modal.find('#edit-studio').val(dvd.studio);
         modal.find('#edit-rating').val(dvd.rating);
         modal.find('#edit-note').val(dvd.note);
+    });
+});
+
+$('#edit-button').click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        type: 'PUT',
+        url: 'dvd/' + $('#edit-dvd-id').val(),
+        data: JSON.stringify({
+            dvdId: $('#edit-dvd-id').val(),
+            title: $('#edit-title').val(),
+            released: $('#edit-released').val(),
+            mpaa: $('#edit-mpaa').val(),
+            director: $('#edit-director').val(),
+            studio: $('#edit-studio').val(),
+            rating: $('#edit-rating').val(),
+            note: $('#edit-note').val()
+        }),
+        headers:
+                {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+        'dataType': 'json'
+    }).success(function () {
+        loadDvds();
     });
 });
 

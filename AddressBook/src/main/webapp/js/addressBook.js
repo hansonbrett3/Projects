@@ -33,7 +33,9 @@ $(document).ready(function () {
             $('#add-city').val('');
             $('#add-state').val('');
             $('#add-zip').val('');
+
             $('#validationErrors').empty();
+            $('.form-error').text('');
             loadAddresses();
         }).error(function (data, status) {
             $('#validationErrors').empty();
@@ -43,6 +45,7 @@ $(document).ready(function () {
                 $('#' + validationError.fieldName).text(validationError.message);
             });
         });
+
     });
     $('#edit-button').click(function (event) {
         event.preventDefault();

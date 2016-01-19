@@ -45,7 +45,6 @@ $(document).ready(function () {
                 $('#' + validationError.fieldName).text(validationError.message);
             });
         });
-
     });
     $('#edit-button').click(function (event) {
         event.preventDefault();
@@ -67,8 +66,24 @@ $(document).ready(function () {
                         'Content-Type': 'application/json'
                     },
             'dataType': 'json'
-        }).success(function () {
+        }).success(function (data, status) {
+            $('#edit-first').val('');
+            $('#edit-last').val('');
+            $('#edit-street').val('');
+            $('#edit-city').val('');
+            $('#edit-state').val('');
+            $('#edit-zip').val('');
+
+            $('#validationErrors').empty();
+            $('.form-error').text('');
             loadAddresses();
+        }).error(function (data, status) {
+            $('#validationErrors').empty();
+            $.each(data.responseJSON.validationErrors, function (index, validationError) {
+                var errorDiv = $('#validationErrors');
+                errorDiv.append(validationError.message).append($('<br>'));
+                $('#' + validationError.fieldName).text(validationError.message);
+            });
         });
     });
     $('#search-button').click(function (event) {

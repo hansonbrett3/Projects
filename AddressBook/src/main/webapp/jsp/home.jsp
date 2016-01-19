@@ -204,6 +204,10 @@
                                            class="form-control" 
                                            id="edit-first"
                                            placeholder="First Name">
+                                    <div id="first" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -213,6 +217,10 @@
                                            class="form-control" 
                                            id="edit-last" 
                                            placeholder="Last Name">
+                                    <div id="last" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -222,6 +230,10 @@
                                            class="form-control" 
                                            id="edit-street" 
                                            placeholder="Street Address">
+                                    <div id="street" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -231,6 +243,10 @@
                                            class="form-control" 
                                            id="edit-city" 
                                            placeholder="City">
+                                    <div id="city" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -240,6 +256,10 @@
                                            class="form-control" 
                                            id="edit-state" 
                                            placeholder="State">
+                                    <div id="state" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -249,6 +269,10 @@
                                            class="form-control" 
                                            id="edit-zip" 
                                            placeholder="Zip Code">
+                                    <div id="zip" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -259,6 +283,7 @@
                                 </div>
                             </div>
                         </form>
+                        <div id="validationErrors" style="color: red" />
                     </div>
                 </div>
             </div>

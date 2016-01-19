@@ -69,17 +69,6 @@ public class HomeControllerNoAjax {
 
         return "redirect:displayDvdLibraryNoAjax";
     }
-    
-//        @RequestMapping(value = "/editDvdNoAjax", method = RequestMethod.POST)
-//    public String editDvdNoAjax(@Valid @ModelAttribute("dvd") Dvd dvd, BindingResult result) 
-//    {
-//        if (result.hasErrors()) {
-//            return "editDvdFormNoAjax";
-//        }
-//        
-//        dao.updateDvd(dvd);
-//        return "redirect:displayDvdLibraryNoAjax";
-//    }
 
     @RequestMapping(value = "/deleteDvdNoAjax", method = RequestMethod.GET)
     public String deleteDvdNoAjax(HttpServletRequest req) {

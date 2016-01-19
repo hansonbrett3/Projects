@@ -35,7 +35,7 @@ public class Dvd {
     @Length(max = 30, message = "User Rating must be no more than 30 characters in length.")
     private String rating;
     @NotEmpty(message = "You must supply a value for User Note.")
-    @Length(max =20, message = "User Note must be no more than 20 characters in length.")
+    @Length(max =50, message = "User Note must be no more than 50 characters in length.")
     private String note;
 
     @Override

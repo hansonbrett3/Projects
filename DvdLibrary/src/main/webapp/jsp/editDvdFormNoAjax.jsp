@@ -20,7 +20,7 @@
         </div>
         <div class="container">
             <h1>Edit DVD Form</h1>
-            <a href="displayDvdLibraryNoAjax">DVD Li(No Ajax)</a><br />
+            <a href="displayDvdLibraryNoAjax">DVD Library(No Ajax)</a><br />
             <hr />
             <sf:form class="form-horizontal"
                      role="form"

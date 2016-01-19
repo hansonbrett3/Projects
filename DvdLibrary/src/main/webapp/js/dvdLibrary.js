@@ -69,17 +69,27 @@ $(document).ready(function () {
                         'Content-Type': 'application/json'
                     },
             'dataType': 'json'
-        }).success(function () {
-//            $('#edit-title').val('');
-//            $('#edit-released').val('');
-//            $('#edit-mpaa').val('');
-//            $('#edit-director').val('');
-//            $('#edit-studio').val('');
-//            $('#edit-rating').val('');
-//            $('#edit-note').val('');
+        }).success(function (data, status) {
+            $('#edit-title').val('');
+            $('#edit-released').val('');
+            $('#edit-mpaa').val('');
+            $('#edit-director').val('');
+            $('#edit-studio').val('');
+            $('#edit-rating').val('');
+            $('#edit-note').val('');
 
+            $('#validationErrors').empty();
+            $('.form-error').text('');
             loadDvds();
+        }).error(function (data, status) {
+            $('#validationErrors').empty();
+            $.each(data.responseJSON.validationErrors, function (index, validationError) {
+                var errorDiv = $('#validationErrors');
+                errorDiv.append(validationError.message).append($('<br>'));
+                $('#' + validationError.fieldName).text(validationError.message);
+            });
         });
+
     });
     $('#search-button').click(function (event) {
         event.preventDefault();

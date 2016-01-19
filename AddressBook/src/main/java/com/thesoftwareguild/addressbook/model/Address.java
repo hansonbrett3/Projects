@@ -29,7 +29,7 @@ public class Address {
     @Length(max = 20, message = "City must be no more than 20 characters in length.")
     private String city;
     @NotEmpty(message = "You must supply a value for State.")
-    @Length(max = 20, message = "State must be no more than 20 characters in length.")
+    @Length(max = 2, message = "State must be no more than 2 characters in length.")
     private String state;
     @NotEmpty(message = "You must supply a value for Zip Code.")
     @Length(max = 5, message = "Zip Code must be no more than 5 characters in length (Ex. 44118).")

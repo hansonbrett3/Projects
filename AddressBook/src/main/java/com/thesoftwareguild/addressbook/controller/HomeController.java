@@ -67,7 +67,7 @@ public class HomeController {
 // UPDATING AN ADDRESS
     @RequestMapping(value = "/address/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void putAddress(@PathVariable("id") int id, @RequestBody Address address) 
+    public void putAddress(@PathVariable("id") int id,@RequestBody Address address) 
     {
         address.setAddressId(id);
         dao.updateAddress(address);

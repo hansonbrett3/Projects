@@ -221,6 +221,10 @@
                                            class="form-control" 
                                            id="edit-title" 
                                            placeholder="Title">
+                                    <div id="title" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -230,6 +234,10 @@
                                            class="form-control" 
                                            id="edit-released"
                                            placeholder="Release Date">
+                                    <div id="released" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -239,6 +247,10 @@
                                            class="form-control" 
                                            id="edit-mpaa"
                                            placeholder="MPAA Rating">
+                                    <div id="mpaa" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -248,6 +260,10 @@
                                            class="form-control" 
                                            id="edit-director" 
                                            placeholder="Director Name">
+                                    <div id="director" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -257,6 +273,10 @@
                                            class="form-control" 
                                            id="edit-studio" 
                                            placeholder="studio">
+                                    <div id="studio" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -266,6 +286,10 @@
                                            class="form-control" 
                                            id="edit-rating" 
                                            placeholder="User Rating">
+                                    <div id="rating" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -275,6 +299,10 @@
                                            class="form-control" 
                                            id="edit-note" 
                                            placeholder="User Note">
+                                    <div id="note" 
+                                         style="color:red" 
+                                         class="form-error">                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -285,6 +313,7 @@
                                 </div>
                             </div>
                         </form>
+                        <div id="validationErrors" style="color: red" />
                     </div>
                 </div>
             </div>

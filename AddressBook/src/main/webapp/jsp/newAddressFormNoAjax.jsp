@@ -35,6 +35,9 @@
                                id="add-first"
                                name="first"
                                placeholder="First Name"/>
+                        <sf:errors path="first" 
+                                   cssClass="error">                           
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">
@@ -46,6 +49,9 @@
                                id="add-last"
                                name="last"
                                placeholder="Last Name"/>
+                        <sf:errors path="last" 
+                                   cssClass="error">                           
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">
@@ -57,6 +63,9 @@
                                id="add-street"
                                name="street"
                                placeholder="Street Address"/>
+                        <sf:errors path="street" 
+                                   cssClass="error">                           
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">
@@ -68,6 +77,9 @@
                                id="add-city"
                                name="city"
                                placeholder="City"/>
+                        <sf:errors path="city" 
+                                   cssClass="error">                           
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">
@@ -79,6 +91,9 @@
                                id="add-state"
                                name="state"
                                placeholder="State"/>
+                        <sf:errors path="state" 
+                                   cssClass="error">                           
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">
@@ -90,6 +105,9 @@
                                id="add-zip"
                                name="zip"
                                placeholder="Zip Code"/>
+                        <sf:errors path="zip" 
+                                   cssClass="error">                           
+                        </sf:errors>
                     </div>
                 </div> 
                 <div class="form-group">

@@ -104,6 +104,7 @@
                         <sf:errors path="zip" 
                                    cssClass="error">                           
                         </sf:errors>
+                        <sf:hidden path="addressId" />
                         </div>
                     </div>
                     <div class="form-group">

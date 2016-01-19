@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 $(document).ready(function () {
     loadDvds();
 
@@ -49,7 +48,39 @@ $(document).ready(function () {
         });
 
     });
+    $('#edit-button').click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'PUT',
+            url: 'dvd/' + $('#edit-dvd-id').val(),
+            data: JSON.stringify({
+                dvdId: $('#edit-dvd-id').val(),
+                title: $('#edit-title').val(),
+                released: $('#edit-released').val(),
+                mpaa: $('#edit-mpaa').val(),
+                director: $('#edit-director').val(),
+                studio: $('#edit-studio').val(),
+                rating: $('#edit-rating').val(),
+                note: $('#edit-note').val()
+            }),
+            headers:
+                    {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+            'dataType': 'json'
+        }).success(function () {
+//            $('#edit-title').val('');
+//            $('#edit-released').val('');
+//            $('#edit-mpaa').val('');
+//            $('#edit-director').val('');
+//            $('#edit-studio').val('');
+//            $('#edit-rating').val('');
+//            $('#edit-note').val('');
 
+            loadDvds();
+        });
+    });
     $('#search-button').click(function (event) {
         event.preventDefault();
         $.ajax({
@@ -87,65 +118,45 @@ $(document).ready(function () {
 // FUNCTIONS
 //===============
 
+function fillDvdTable(dvdLibrary, status)
+{
+    clearDvdTable();
+    var dTable = $('#contentRows');
+
+    $.each(dvdLibrary, function (index, dvd) {
+        dTable.append($('<tr>')
+                .append($('<td>').append(
+                        $('<a>')
+                        .attr(
+                                {
+                                    'data-dvd-id': dvd.dvdId,
+                                    'data-toggle': 'modal',
+                                    'data-target': '#detailsModal'
+                                }
+                        )
+                        .text(dvd.title + ' | ' + dvd.mpaa))
+                        )
+                .append($('<td>').text(dvd.released))
+                .append($('<td>').append($('<a>')
+                        .attr({
+                            'data-dvd-id': dvd.dvdId,
+                            'data-toggle': 'modal',
+                            'data-target': '#editModal'
+                        })
+                        .text('Edit')))
+                .append($('<td>').append($('<a>')
+                        .attr({'onClick': 'deleteDvd(' + dvd.dvdId + ')'})
+                        .text('Delete')))
+                );
+    });
+}
+
 function loadDvds() {
     $.ajax({
         url: "dvds"
     }).success(function (data, status) {
         fillDvdTable(data, status);
     });
-}
-
-function fillDvdTable(dvdLibrary, status) {
-
-    clearDvdTable();
-    var dTable = $('#contentRows');
-
-    $.each(dvdLibrary, function (index, dvd) {
-        dTable.append($('<tr>')
-                .append($('<td>')
-                        .append($('<a>')
-                                .attr({
-                                    'data-dvd-id': dvd.dvdId,
-                                    'data-toggle': 'modal',
-                                    'data-target': '#detailsModal'
-                                })
-                                .text(dvd.title + ' | ' + dvd.mpaa)
-                                )
-                        )
-                .append($('<td>').text(dvd.released))
-                .append($('<td>')
-                        .append($('<a>')
-                                .attr({
-                                    'data-dvd-id': dvd.dvdId,
-                                    'data-toggle': 'modal',
-                                    'data-target': '#editModal'
-                                })
-                                .text('Edit')
-                                )
-                        )
-                .append($('<td>')
-                        .append($('<a>')
-                                .attr({
-                                    'onClick': 'deleteDvd(' + dvd.dvdId + ')'
-                                })
-                                .text('Delete')
-                                )
-                        )
-                );
-    });
-}
-
-function deleteDvd(id) {
-    var answer = confirm("Do you really want to delete this dvd?");
-
-    if (answer === true) {
-        $.ajax({
-            type: 'DELETE',
-            url: 'dvd/' + id
-        }).success(function () {
-            loadDvds();
-        });
-    }
 }
 
 function clearDvdTable() {
@@ -191,31 +202,18 @@ $('#editModal').on('show.bs.modal', function (event) {
     });
 });
 
-$('#edit-button').click(function (event) {
-    event.preventDefault();
-    $.ajax({
-        type: 'PUT',
-        url: 'dvd/' + $('#edit-dvd-id').val(),
-        data: JSON.stringify({
-            dvdId: $('#edit-dvd-id').val(),
-            title: $('#edit-title').val(),
-            released: $('#edit-released').val(),
-            mpaa: $('#edit-mpaa').val(),
-            director: $('#edit-director').val(),
-            studio: $('#edit-studio').val(),
-            rating: $('#edit-rating').val(),
-            note: $('#edit-note').val()
-        }),
-        headers:
-                {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-        'dataType': 'json'
-    }).success(function () {
-        loadDvds();
-    });
-});
+function deleteDvd(id) {
+    var answer = confirm("Do you really want to delete this dvd?");
+    if (answer === true)
+    {
+        $.ajax({
+            type: 'DELETE',
+            url: 'dvd/' + id
+        }).success(function () {
+            loadDvds();
+        });
+    }
+}
 
 var testDvdData = [
     {

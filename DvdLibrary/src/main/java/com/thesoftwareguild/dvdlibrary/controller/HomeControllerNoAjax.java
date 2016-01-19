@@ -33,23 +33,20 @@ public class HomeControllerNoAjax {
     }
 
     @RequestMapping(value = "/displayDvdLibraryNoAjax", method = RequestMethod.GET)
-    public String displayDvdLibraryNoAjax(Model model) 
-    {
+    public String displayDvdLibraryNoAjax(Model model) {
         List<Dvd> dList = dao.getAllDvds();
         model.addAttribute("dvdLibrary", dList);
-        
+
         return "displayDvdLibraryNoAjax";
     }
 
     @RequestMapping(value = "displayNewDvdFormNoAjax", method = RequestMethod.GET)
-    public String displayNewDvdFormNoAjax() 
-    {
+    public String displayNewDvdFormNoAjax() {
         return "newDvdFormNoAjax";
     }
 
     @RequestMapping(value = "/addNewDvdNoAjax", method = RequestMethod.POST)
-    public String addNewDvdNoAjax(HttpServletRequest req) 
-    {
+    public String addNewDvdNoAjax(HttpServletRequest req) {
         String title = req.getParameter("title");
         String released = req.getParameter("released");
         String mpaa = req.getParameter("mpaa");
@@ -74,8 +71,7 @@ public class HomeControllerNoAjax {
     }
 
     @RequestMapping(value = "/deleteDvdNoAjax", method = RequestMethod.GET)
-    public String deleteDvdNoAjax(HttpServletRequest req) 
-    {
+    public String deleteDvdNoAjax(HttpServletRequest req) {
 
         int dvdId = Integer.parseInt(req.getParameter("dvdId"));
 
@@ -85,8 +81,7 @@ public class HomeControllerNoAjax {
     }
 
     @RequestMapping(value = "/displayEditDvdFormNoAjax", method = RequestMethod.GET)
-    public String displayEditDvdFormNoAjax(HttpServletRequest req, Model model) 
-    {
+    public String displayEditDvdFormNoAjax(HttpServletRequest req, Model model) {
 
         int dvdId = Integer.parseInt(req.getParameter("dvdId"));
 
@@ -103,8 +98,8 @@ public class HomeControllerNoAjax {
         if (result.hasErrors()) {
             return "editDvdFormNoAjax";
         }
+        
         dao.updateDvd(dvd);
-
         return "redirect:displayDvdLibraryNoAjax";
     }
 }

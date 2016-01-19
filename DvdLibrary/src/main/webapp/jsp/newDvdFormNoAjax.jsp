@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -35,6 +34,9 @@
                                id="add-title"
                                name="title"
                                placeholder="Title"/>
+                        <sf:errors path="title" 
+                                   cssClass="error">                         
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">
@@ -46,6 +48,9 @@
                                id="add-released"
                                name="released"
                                placeholder="Release Date"/>
+                        <sf:errors path="released" 
+                                   cssClass="error">                          
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">
@@ -57,6 +62,9 @@
                                id="add-mpaa"
                                name="mpaa"
                                placeholder="MPAA Rating"/>
+                        <sf:errors path="mpaa" 
+                                   cssClass="error">                           
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">
@@ -68,6 +76,9 @@
                                id="add-director"
                                name="director"
                                placeholder="Director"/>
+                        <sf:errors path="director" 
+                                   cssClass="error">                          
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">
@@ -79,6 +90,9 @@
                                id="add-studio"
                                name="studio"
                                placeholder="Studio"/>
+                        <sf:errors path="studio" 
+                                   cssClass="error">                           
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">
@@ -90,6 +104,9 @@
                                id="add-rating"
                                name="rating"
                                placeholder="User Rating"/>
+                        <sf:errors path="rating" 
+                                   cssClass="error">                          
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">
@@ -101,6 +118,9 @@
                                id="add-note"
                                name="note"
                                placeholder="User Note"/>
+                        <sf:errors path="note" 
+                                   cssClass="error">                           
+                        </sf:errors>
                     </div>
                 </div>
                 <div class="form-group">

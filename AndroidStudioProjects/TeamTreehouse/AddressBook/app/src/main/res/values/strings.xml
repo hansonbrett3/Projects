@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AddressBook</string>
+    <string name="edit">Edit Contact</string>
+    <string name="delete">Delete Contact</string>
+    <string name="add">Add New Contact</string>
+    <string name="viewAll">List All Contacts</string>
+    <string name="save">Save Address</string>
+</resources>

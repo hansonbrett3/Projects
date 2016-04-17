@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <Item
+        android:id="@+id/EditContact"
+        android:orderInCategory="100"
+        android:title="@string/edit"/>
+
+    <item
+        android:id="@+id/addNew_menu"
+        android:title="@string/add">
+    </item>
+    <item
+        android:id="@+id/viewAll_menu"
+        android:title="@string/viewAll">
+    </item>
+    <item
+        android:id="@+id/delete"
+        android:title="@string/delete">
+    </item>
+</menu>

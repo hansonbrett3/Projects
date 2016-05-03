@@ -9,8 +9,9 @@ public class CheckingAccount {
 		this.balance = balance;
 	}
 
-	public void transfer(CheckingAccount destinationAccount, double amount) {
+	public void transfer(CheckingAccount sourceAccount,CheckingAccount destinationAccount, double amount) {
 		destinationAccount.deposit(amount);
+                sourceAccount.withdraw(amount);
 	}
 
 	public void deposit(double amount) {

@@ -25,7 +25,7 @@ public class AcumenBank {
 			return;
 		}
 
-		michaelsAccount.transfer(gobsAccount, 1000);
+		michaelsAccount.transfer(michaelsAccount, gobsAccount, 1000);
 
 		System.out.println("Updated Account Details:");
 		System.out.println();

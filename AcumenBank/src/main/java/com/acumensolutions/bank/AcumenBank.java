@@ -48,13 +48,27 @@ public class AcumenBank {
 		garysSavingsAccount.applyInterest(2);
          */
         SavingsAccount michaelsSavingsAccount = new SavingsAccount("Michaels Savings", 30000, .0089);
-
         SavingsAccount gobsSavingsAccount = new SavingsAccount("Gobs Savings", 10000, .0056);
+
+        System.out.println("Open Savings Accounts:");
+        System.out.println();
+        printAccountDetails(michaelsSavingsAccount);
+        System.out.println();
+        printAccountDetails(gobsSavingsAccount);
+        
+                System.out.println();
+        System.out.println("Making transfer of $5000...");
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            return;
+        }
 
         michaelsSavingsAccount.transfer(gobsSavingsAccount, michaelsSavingsAccount, 5000);
         michaelsSavingsAccount.ApplyInterestRate(2);
         gobsSavingsAccount.ApplyInterestRate(2);
 
+        System.out.println("Updated Account Details:");
         System.out.println();
         printAccountDetails(michaelsSavingsAccount);
         System.out.println();

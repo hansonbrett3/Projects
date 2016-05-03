@@ -19,6 +19,7 @@ public class SavingsAccount extends BankAccount {
 
     public SavingsAccount(String ownerName, double balance, double interestRate) {
         super(ownerName, balance);
+        this.interestRate = interestRate;
     }
 
     public void ApplyInterestRate(double interestRate) {

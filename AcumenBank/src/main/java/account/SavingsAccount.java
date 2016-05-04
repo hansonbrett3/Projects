@@ -12,18 +12,21 @@ package account;
 public class SavingsAccount extends BankAccount {
 
     private double interestRate;
-
-    public SavingsAccount() {
-        super();
-    }
+    private double endPrincipal;
+    private int yearsCompounded;
 
     public SavingsAccount(String ownerName, double balance, double interestRate) {
         super(ownerName, balance);
         this.interestRate = interestRate;
     }
 
-    public void ApplyInterestRate(double interestRate) {
-        double increase = (this.getBalance() * interestRate);
-
+    public void ApplyInterestRate(int yearsCompounded) {
+        endPrincipal = this.getBalance() * (Math.pow((1 + interestRate), yearsCompounded));
     }
+
+    public double getEndPrincipal() {
+        return this.endPrincipal;
+    }
+    
+    
 }

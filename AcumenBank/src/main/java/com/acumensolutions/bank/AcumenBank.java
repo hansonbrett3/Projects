@@ -10,14 +10,14 @@ public class AcumenBank {
         System.out.println("Welcome to Acumen Bank!");
         System.out.println();
 
-        CheckingAccount michaelsAccount = new CheckingAccount("Michael", 5000);
-        CheckingAccount gobsAccount = new CheckingAccount("Gob", 2000);
+        CheckingAccount michaelsCheckingAccount = new CheckingAccount("Michael Checking", 5000);
+        CheckingAccount gobsCheckingAccount = new CheckingAccount("Gob Checking", 2000);
 
         System.out.println("Open Accounts:");
         System.out.println();
-        printAccountDetails(michaelsAccount);
+        printAccountDetails(michaelsCheckingAccount);
         System.out.println();
-        printAccountDetails(gobsAccount);
+        printAccountDetails(gobsCheckingAccount);
 
         System.out.println();
         System.out.println("Making transfer of $1000...");
@@ -27,15 +27,71 @@ public class AcumenBank {
             return;
         }
 
-        michaelsAccount.transfer(michaelsAccount, gobsAccount, 1000);
+        michaelsCheckingAccount.transfer(michaelsCheckingAccount, gobsCheckingAccount, 1000);
 
-        System.out.println("Updated Account Details:");
+        System.out.println("Updated Checking Account Details:");
         System.out.println();
-        printAccountDetails(michaelsAccount);
+        printAccountDetails(michaelsCheckingAccount);
         System.out.println();
-        printAccountDetails(gobsAccount);
+        printAccountDetails(gobsCheckingAccount);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
-        // sample code for savings account implementation
+        SavingsAccount acesSavingsAccount = new SavingsAccount("Ace's Savings", 30000, .0089);
+        SavingsAccount garysSavingsAccount = new SavingsAccount("Gary's Savings", 10000, .0056);
+
+        System.out.println("Open Accounts:");
+        System.out.println();
+        printAccountDetails(acesSavingsAccount);
+        System.out.println();
+        printAccountDetails(garysSavingsAccount);
+
+        System.out.println();
+        System.out.println("Making transfer of $5000...");
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            return;
+        }
+
+        acesSavingsAccount.transfer(acesSavingsAccount, garysSavingsAccount, 5000);
+        
+        acesSavingsAccount.ApplyInterestRate(2);
+        garysSavingsAccount.ApplyInterestRate(2);
+
+        System.out.println("Updated SavingsAccount Details:");
+        System.out.println();
+        printSavingsAccountDetails(acesSavingsAccount);
+        System.out.println();
+        printSavingsAccountDetails(garysSavingsAccount);
+
+    }
+
+    private static void printAccountDetails(BankAccount account) {
+
+        System.out.format("Account for %s:\r\n", account.getOwnerName());
+        System.out.format("Balance: $%.2f\r\n", account.getBalance());
+
+    }
+
+    private static void printSavingsAccountDetails(SavingsAccount savingsAccount) {
+        System.out.format("Account for %s:\r\n", savingsAccount.getOwnerName());
+        System.out.format("Balance: $%.2f\r\n", savingsAccount.getEndPrincipal());
+    }
+
+}
+
+// sample code for savings account implementation
         /*
 		// Initialize new savings account with initial balance of $30,000 and 0.89% interest
 		SavingsAccount acesSavingsAccount = new SavingsAccount("Ace", 30000, .0089);
@@ -47,36 +103,3 @@ public class AcumenBank {
 		acesSavingsAccount.applyInterest(2);
 		garysSavingsAccount.applyInterest(2);
          */
-        SavingsAccount michaelsSavingsAccount = new SavingsAccount("Michaels Savings", 30000, .0089);
-        SavingsAccount gobsSavingsAccount = new SavingsAccount("Gobs Savings", 10000, .0056);
-
-        System.out.println("Open Savings Accounts:");
-        System.out.println();
-        printAccountDetails(michaelsSavingsAccount);
-        System.out.println();
-        printAccountDetails(gobsSavingsAccount);
-        
-                System.out.println();
-        System.out.println("Making transfer of $5000...");
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            return;
-        }
-
-        michaelsSavingsAccount.transfer(gobsSavingsAccount, michaelsSavingsAccount, 5000);
-        michaelsSavingsAccount.ApplyInterestRate(2);
-        gobsSavingsAccount.ApplyInterestRate(2);
-
-        System.out.println("Updated Account Details:");
-        System.out.println();
-        printAccountDetails(michaelsSavingsAccount);
-        System.out.println();
-        printAccountDetails(gobsSavingsAccount);
-    }
-
-    private static void printAccountDetails(BankAccount account) {
-        System.out.format("Account for %s:\r\n", account.getOwnerName());
-        System.out.format("Balance: $%.2f\r\n", account.getBalance());
-    }
-}

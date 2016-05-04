@@ -14,10 +14,6 @@ public class BankAccount {
     private String ownerName;
     private double balance;
 
-    public BankAccount() {
-        super();
-    }
-
     public BankAccount(String ownerName, double balance) {
         this.ownerName = ownerName;
         this.balance = balance;

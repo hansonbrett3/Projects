@@ -11,9 +11,8 @@ package account;
  */
 public class SavingsAccount extends BankAccount {
 
-    private double interestRate;
+    private final double interestRate;
     private double endPrincipal;
-    private int yearsCompounded;
 
     public SavingsAccount(String ownerName, double balance, double interestRate) {
         super(ownerName, balance);

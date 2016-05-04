@@ -13,14 +13,17 @@ public class AcumenBank {
         CheckingAccount michaelsCheckingAccount = new CheckingAccount("Michael Checking", 5000);
         CheckingAccount gobsCheckingAccount = new CheckingAccount("Gob Checking", 2000);
 
-        System.out.println("Open Accounts:");
+        System.out.println("Open Checking Accounts:");
         System.out.println();
         printAccountDetails(michaelsCheckingAccount);
         System.out.println();
         printAccountDetails(gobsCheckingAccount);
-
         System.out.println();
-        System.out.println("Making transfer of $1000...");
+
+        System.out.println("==============================================================");
+        System.out.println("Making transfer of $1000...(" + michaelsCheckingAccount.getOwnerName() + " to " + gobsCheckingAccount.getOwnerName()+ ")");
+        System.out.println("==============================================================");
+        System.out.println();
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
@@ -34,30 +37,23 @@ public class AcumenBank {
         printAccountDetails(michaelsCheckingAccount);
         System.out.println();
         printAccountDetails(gobsCheckingAccount);
+        System.out.println();
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
         SavingsAccount acesSavingsAccount = new SavingsAccount("Ace's Savings", 30000, .0089);
         SavingsAccount garysSavingsAccount = new SavingsAccount("Gary's Savings", 10000, .0056);
 
-        System.out.println("Open Accounts:");
+        System.out.println("------------------------------------------------------------------------");
+        System.out.println("Open Savings Accounts:");
         System.out.println();
         printAccountDetails(acesSavingsAccount);
         System.out.println();
         printAccountDetails(garysSavingsAccount);
-
         System.out.println();
-        System.out.println("Making transfer of $5000...");
+
+        System.out.println("==============================================================");
+        System.out.println("Making transfer of $5000...(" + acesSavingsAccount.getOwnerName() + " to " + garysSavingsAccount.getOwnerName() + ")");
+        System.out.println("==============================================================");
+        System.out.println();
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {

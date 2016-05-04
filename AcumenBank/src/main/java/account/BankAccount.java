@@ -11,7 +11,7 @@ package account;
  */
 public class BankAccount {
 
-    private String ownerName;
+    private final String ownerName;
     private double balance;
 
     public BankAccount(String ownerName, double balance) {

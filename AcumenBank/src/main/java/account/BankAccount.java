@@ -11,17 +11,18 @@ package account;
  */
 public class BankAccount {
 
-    private final String ownerName;
-    private double balance;
+    // protected so that the fields are available to subclasses
+    protected String ownerName;
+    protected double balance;
 
     public BankAccount(String ownerName, double balance) {
         this.ownerName = ownerName;
         this.balance = balance;
     }
 
-    public void transfer(BankAccount sourceAccount, BankAccount destinationAccount, double amount) {
+    public void transfer(BankAccount destinationAccount, double amount) {
         destinationAccount.deposit(amount);
-        sourceAccount.withdraw(amount);
+        this.balance -= amount;
     }
 
     public void deposit(double amount) {
@@ -31,10 +32,7 @@ public class BankAccount {
         this.balance += amount;
     }
 
-    public void withdraw(double amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Cannot withdraw a negative amount");
-        }
+    protected void withdraw(double amount) {
         this.balance -= amount;
     }
 

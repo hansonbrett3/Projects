@@ -11,7 +11,7 @@ package account;
  */
 public class SavingsAccount extends BankAccount {
 
-    private final double interestRate;
+    private double interestRate;
     private double endPrincipal;
 
     public SavingsAccount(String ownerName, double balance, double interestRate) {
@@ -20,12 +20,24 @@ public class SavingsAccount extends BankAccount {
     }
 
     public void ApplyInterestRate(int yearsCompounded) {
-        endPrincipal = this.getBalance() * (Math.pow((1 + interestRate), yearsCompounded));
+        // Each savings account is compounded once annually - NewBalance = Principal(1 + InterestRate)^(YearsCompounded*compoundedPerYear)
+        this.endPrincipal = this.getBalance() * (Math.pow((1 + this.getInterestRate()), yearsCompounded));
+    }
+
+
+    public double getInterestRate() {
+        return interestRate;
+    }
+
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
     }
 
     public double getEndPrincipal() {
-        return this.endPrincipal;
+        return endPrincipal;
     }
-    
-    
+
+    public void setEndPrincipal(double endPrincipal) {
+        this.endPrincipal = endPrincipal;
+    }
 }
